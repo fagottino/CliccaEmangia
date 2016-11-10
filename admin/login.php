@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -63,18 +66,18 @@
 
                                             <div class="space-6"></div>
 
-                                            <form>
+                                            <form method="post" id="login">
                                                 <fieldset>
                                                     <label class="block clearfix">
                                                         <span class="block input-icon input-icon-right">
-                                                            <input type="text" class="form-control" placeholder="Username" />
+                                                            <input type="text" id="email" name="emails" class="form-control" placeholder="E-mail" />
                                                             <i class="ace-icon fa fa-user"></i>
                                                         </span>
                                                     </label>
 
                                                     <label class="block clearfix">
                                                         <span class="block input-icon input-icon-right">
-                                                            <input type="password" class="form-control" placeholder="Password" />
+                                                            <input type="password" id="password" name="passwords" class="form-control" placeholder="Password" />
                                                             <i class="ace-icon fa fa-lock"></i>
                                                         </span>
                                                     </label>
@@ -82,9 +85,8 @@
                                                     <div class="space"></div>
 
                                                     <div class="clearfix">
-                                                        <button type="button" class="width-100 pull-right btn btn-sm btn-primary">
-                                                            <i class="ace-icon fa fa-key"></i>
-                                                            <span class="bigger-110">Login</span>
+                                                        <button type="button" id="btnLogin" onclick="login();" class="width-100 btn btn-sm btn-primary">
+                                                            <i class="ace-icon fa fa-key"></i> Login
                                                         </button>
                                                     </div>
 
@@ -176,34 +178,26 @@
                     $(target).addClass('visible');//show target
                 });
             });
-
-
-
-            //you don't need this, just used for changing background
-            jQuery(function ($) {
-                $('#btn-login-dark').on('click', function (e) {
-                    $('body').attr('class', 'login-layout');
-                    $('#id-text2').attr('class', 'white');
-                    $('#id-company-text').attr('class', 'blue');
-
-                    e.preventDefault();
+        </script>
+        <script type="text/javascript">
+            //$("#btnLogin").submit(function () {
+            function login() {
+                $.post("./Controller/UserController.php", {email: $('#email').val(), password: $('#password').val(), rand: Math.random()}, function (response) {
+                        
+                    if (response == 1) {
+                        $("#email").fadeTo(200, 0.1, function () {
+                            $(this).text('Controllo le credenziali...').fadeTo(2000, 1, function () {
+                                document.location = 'index.php';
+                            });
+                        });
+                    } else {
+                        $("#btnLogin").text('Dati di login errati!').fadeTo(2000, 1, function() {
+                            $(this).html("<i class=\"ace-icon fa fa-key\"></i> Login");
+                        });
+                    }
                 });
-                $('#btn-login-light').on('click', function (e) {
-                    $('body').attr('class', 'login-layout light-login');
-                    $('#id-text2').attr('class', 'grey');
-                    $('#id-company-text').attr('class', 'blue');
-
-                    e.preventDefault();
-                });
-                $('#btn-login-blur').on('click', function (e) {
-                    $('body').attr('class', 'login-layout blur-login');
-                    $('#id-text2').attr('class', 'white');
-                    $('#id-company-text').attr('class', 'light-blue');
-
-                    e.preventDefault();
-                });
-
-            });
+                return false;
+            };
         </script>
     </body>
 </html>

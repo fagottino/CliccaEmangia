@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+// verifico che esista la sessione di autenticazione
+if (empty($_SESSION['userid'])) {
+    header("location: ./login.php");
+}
+
+// gestisco la richiesta di logout
+if (isset($_GET['logout'])) {
+  session_destroy();
+  echo "Sei uscito con successo";
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
