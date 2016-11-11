@@ -85,7 +85,7 @@ session_start();
                                                     <div class="space"></div>
 
                                                     <div class="clearfix">
-                                                        <button type="button" id="btnLogin" onclick="login();" class="width-100 btn btn-sm btn-primary">
+                                                        <button type="button" id="btnLogin" class="width-100 btn btn-sm btn-primary">
                                                             <i class="ace-icon fa fa-key"></i> Login
                                                         </button>
                                                     </div>
@@ -165,7 +165,7 @@ session_start();
 <![endif]-->
         <script type="text/javascript">
             if ('ontouchstart' in document.documentElement)
-                document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+            document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
         </script>
 
         <!-- inline scripts related to this page -->
@@ -180,22 +180,32 @@ session_start();
             });
         </script>
         <script type="text/javascript">
-            //$("#btnLogin").submit(function () {
-            function login() {
-                $.post("./Controller/UserController.php", {email: $('#email').val(), password: $('#password').val(), rand: Math.random()}, function (response) {
-                        
-                    if (response == 1) {
-                        $("#email").fadeTo(200, 0.1, function () {
-                            $(this).text('Controllo le credenziali...').fadeTo(2000, 1, function () {
-                                document.location = 'index.php';
+            document.getElementById("btnLogin").onclick = function() {
+            
+                $.post("./Controller/UserController.php",
+                        {
+                            email: $('#email').val(),
+                            password: $('#password').val(),
+                            type: "login"
+                        },
+                        function (response) {
+                            $("#btnLogin").text('Controllo le credenziali...').fadeTo(2000, 1, function () {
+                                
+                                if (response == 1) {
+                                    $("#btnLogin").fadeTo(200, 0.1, function () {
+                                        $(this).text('Accesso in corso...').fadeTo(2000, 1, function () {
+                                            document.location = 'index.php';
+                                        });
+                                    });
+                                } else {
+                                    $("#btnLogin").fadeTo(200, 0.1, function () {
+                                        $(this).text('Login fallito. ' + response).fadeTo(3000, 1, function () {
+                                            $(this).html("<i class=\"ace-icon fa fa-key\"></i> Login");
+                                        });
+                                    });
+                                }
                             });
                         });
-                    } else {
-                        $("#btnLogin").text('Dati di login errati!').fadeTo(2000, 1, function() {
-                            $(this).html("<i class=\"ace-icon fa fa-key\"></i> Login");
-                        });
-                    }
-                });
                 return false;
             };
         </script>
