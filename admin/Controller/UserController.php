@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../Model/Database.php';
 require_once '../Model/User.php';
 /*
@@ -12,46 +13,64 @@ require_once '../Model/User.php';
  *
  * @author fagottino
  */
-//class UserController {
+class UserController {
     
-//    public function __construct() {
-        if (isset($_POST['type'])) {
-            switch ($_POST['type']) {
-                case 'login':
-                    login($_POST['email'], $_POST['password']);
-                break;
-            }
-        }
-//    }
+    public function __construct() { }
     
-//    public function login($_email, $_password) {
-        function login($_email, $_password) {
-        //$_email = htmlspecialchars($_POST['email'],ENT_QUOTES);
-        $_email = $_POST['email'];
+    public function login($_email, $_password) {
+        $_email = htmlspecialchars($_POST['email'],ENT_QUOTES);
         $_password = md5($_POST['password']);
+        
         if ($_email == "" || $_email == NULL) {
-            //throw new UserException("Username non valido.");
-            echo "Username non valido.";
+            throw new UserException("Username non valido.");
         } else if ($_password == "" || $_password == NULL) {
-            //throw new UserException("Password non valida.");
-            echo "Password non valida.";
+            throw new UserException("Password non valida.");
         } else {
-            $connection = Database::getConnection();
-            //$findUser = $connection->query("SELECT * FROM user WHERE email = '".$_email."' AND password = '".$_password."'");
-            $findUser = $connection->query("SELECT * FROM `user` WHERE email = 'test@test.it' AND password = 'ab34210c47eedef9818b040cd778c429'");
+            try {
+                $connection = Database::getConnection();
+                $findUser = $connection->query("SELECT * FROM `user` WHERE email = '".$_email."' AND password = '".$_password."'");
+                Database::releaseConnection($connection);
+            } catch (DatabaseException $e) {
+                throw new DatabaseException($e->getMessage());
+            }
             
             if ($findUser != NULL) {
-                $row = $findUser->fetch_assoc();
-                if ($row->num_rows > 0)
-                    $_SESSION['userid'] = $findUser['idUser'];
+                if ($findUser->num_rows > 0) {
+                    $result = $findUser->fetch_assoc();
+                    $_SESSION['user'] = $result;
+                    return true;
+                }
             } else {
-                //throw new UserExceptio("Non ho trovato alcun utente con queste credenziali.");
-                echo "Non ho trovato alcun utente con queste credenziali.";
+                throw new UserException("Non ho trovato alcun utente con queste credenziali.");
             }
         }
     }
-//}
+    
+    public function logout() {
+        session_destroy();
+    }
+}
 
-//class UserException extends Exception { }
+if (isset($_POST['type'])) {
+    $user = new UserController();
+    switch ($_POST['type']) {
+        case 'login':
+            try {
+                $login = $user->login($_POST['email'], $_POST['password']);
+                if ($login)
+                    echo "1";
+            } catch (UserException $e) {
+                echo $e->getMessage();
+            } catch (DatabaseException $e) {
+                echo $e->getMessage();
+            }
+        break;
+        case 'logout':
+            $user->logout();
+        break;
+    }
+}
+
+class UserException extends Exception { }
 
 ?>

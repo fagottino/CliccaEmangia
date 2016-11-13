@@ -189,17 +189,17 @@ session_start();
                             type: "login"
                         },
                         function (response) {
-                            $("#btnLogin").text('Controllo le credenziali...').fadeTo(2000, 1, function () {
+                            $("#btnLogin").text('Controllo le credenziali...').fadeTo(1500, 1, function () {
                                 
                                 if (response == 1) {
                                     $("#btnLogin").fadeTo(200, 0.1, function () {
                                         $(this).text('Accesso in corso...').fadeTo(2000, 1, function () {
-                                            document.location = 'index.php';
+                                            document.location = './index.php';
                                         });
                                     });
                                 } else {
                                     $("#btnLogin").fadeTo(200, 0.1, function () {
-                                        $(this).text('Login fallito. ' + response).fadeTo(3000, 1, function () {
+                                        $(this).html('Login fallito. ' + response).fadeTo(3000, 1, function () {
                                             $(this).html("<i class=\"ace-icon fa fa-key\"></i> Login");
                                         });
                                     });
