@@ -11,7 +11,7 @@
         </button>
 
         <div class="navbar-header pull-left">
-            <a href="index.php?action=home" class="navbar-brand">
+            <?php echo (isset($action) && $action != "home") ? "<a href=\"index.php?action=home\" class=\"navbar-brand\">" : "<a href=\"#\" class=\"navbar-brand\">"; ?>
                 <small>
                     <i class="fa fa-hand-o-right"></i>
                     Clicca e Mangia

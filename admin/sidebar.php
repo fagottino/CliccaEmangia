@@ -19,7 +19,7 @@
 
         <?php echo (isset($action) && $action == 'plates') ? "<li class=\"active\">" : "<li class=\"\">"; ?>
             <a href="index.php?action=plates">
-                <i class="menu-icon fa-spoon"></i>
+                <i class="menu-icon fa fa-cutlery"></i>
                 <span class="menu-text"> Piatti </span>
             </a>
 
