@@ -39,9 +39,11 @@ class UserController {
                     $result = $findUser->fetch_assoc();
                     $_SESSION['user'] = $result;
                     return true;
+                } else {
+                    throw new UserException("Credenziali errate.");
                 }
             } else {
-                throw new UserException("Non ho trovato alcun utente con queste credenziali.");
+                throw new UserException("Erorre nella query del database.");
             }
         }
     }
