@@ -37,13 +37,23 @@ class UserController {
             if ($findUser != NULL) {
                 if ($findUser->num_rows > 0) {
                     $result = $findUser->fetch_assoc();
+                    $user = new User();
+                    try {
+                        $user->setId($result['id_user']);
+                        $user->setName($result['name']);
+                        $user->setSurname($result['surname']);
+                        $user->setEmail($result['email']);
+                        $user->setTelephone($result['telephone']);
+                    } catch (UserException $e) {
+                        throw new UserException($e->getMessage());
+                    }
                     $_SESSION['user'] = $result;
                     return true;
                 } else {
                     throw new UserException("Credenziali errate.");
                 }
             } else {
-                throw new UserException("Erorre nella query del database.");
+                throw new UserException("Errore nella query del database.");
             }
         }
     }
@@ -54,11 +64,11 @@ class UserController {
 }
 
 if (isset($_POST['type'])) {
-    $user = new UserController();
+    $userController = new UserController();
     switch ($_POST['type']) {
         case 'login':
             try {
-                $login = $user->login($_POST['email'], $_POST['password']);
+                $login = $userController->login($_POST['email'], $_POST['password']);
                 if ($login)
                     echo "1";
             } catch (UserException $e) {

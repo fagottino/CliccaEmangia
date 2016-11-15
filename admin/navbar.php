@@ -283,6 +283,7 @@
                             <small>Benvenuto</small>
                             <?php 
                             echo $_SESSION['user']['name'];
+                            //echo $user->getName();
                             ?>
                         </span>
 

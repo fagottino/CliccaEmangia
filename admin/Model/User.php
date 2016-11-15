@@ -26,4 +26,43 @@ class User {
         $this->telephone = $_telephone;
     }
     
+    function getId() {
+        return $this->id;
+    }
+
+    function getName() {
+        return $this->name;
+    }
+
+    function getSurname() {
+        return $this->surname;
+    }
+
+    function getEmail() {
+        return $this->email;
+    }
+
+    function getTelephone() {
+        return $this->telephone;
+    }
+
+    function setId($_id) {
+        $this->id = $_id;
+    }
+
+    function setName($_name) {
+        $this->name = $_name;
+    }
+
+    function setSurname($_surname) {
+        $this->surname = $_surname;
+    }
+
+    function setEmail($_email) {
+        $this->email = $_email;
+    }
+
+    function setTelephone($_telephone) {
+        $this->telephone = $_telephone;
+    }
 }

@@ -1,12 +1,10 @@
 <div class="page-content">
-    
-
     <div class="page-header">
         <h1>
             Piatti
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                gestisci i piatti della tua attività
+                lista dei piatti disponibili
             </small>
         </h1>
     </div><!-- /.page-header -->
@@ -20,11 +18,9 @@
             </div><!-- /.row -->
             <div class="row">
                 <div class="col-xs-12">
+
                     <div class="clearfix">
                         <div class="pull-right tableTools-container"></div>
-                    </div>
-                    <div class="table-header">
-                        Elenco dei piatti disponibili
                     </div>
 
                     <!-- div.table-responsive -->
@@ -40,18 +36,13 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </th>
-                                    <th>Nome Piatto</th>
-                                    <th>Descrizione</th>
-                                    <th class="hidden-480">Prezzo</th>
-                                    <th>Azioni</th>
+                                        <th>Nome</th>
+                                        <th>Descrizione</th>
+                                        <th>Prezzo</th>
+                                        <th class="hidden-480">Immagine</th>
+                                    <th class="hidden-480">Stato</th>
+                                    <th class="hidden-480">Azioni</th>
 
-<!--                                    <th>
-                                        <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                                        Update
-                                    </th>
-                                    <th class="hidden-480">Status</th>
-
-                                    <th></th>-->
                                 </tr>
                             </thead>
 
@@ -69,11 +60,11 @@
                                     </td>
                                     <td>$45</td>
                                     <td class="hidden-480">3,330</td>
-<!--                                    <td>Feb 12</td>
+                                    <td>Feb 12</td>
 
                                     <td class="hidden-480">
-                                        <span class="label label-sm label-warning">Expiring</span>
-                                    </td>-->
+                                        <span class="label label-sm label-success">Disponibile</span>
+                                    </td>
 
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">
@@ -147,14 +138,10 @@
                             <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
                                 <thead>
                                     <tr>
-                                        <th>Domain</th>
-                                        <th>Price</th>
-                                        <th>Clicks</th>
-
-                                        <th>
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            Update
-                                        </th>
+                                        <th>Nome</th>
+                                        <th>Descrizione</th>
+                                        <th>Prezzo</th>
+                                        <th>Immagine</th>
                                     </tr>
                                 </thead>
 
@@ -247,3 +234,8 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 </div><!-- /.page-content -->
+
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+</div><!-- /.main-container -->
