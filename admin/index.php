@@ -155,7 +155,7 @@ else
         <script src="assets/js/dataTables.select.min.js"></script>
         <script src="assets/js/platesTable.js"></script>
         <?php
-            } else if ($action == "home") {
+            } else if ($action == "home" || $action == "") {
         ?>
         <script src="assets/js/jquery-ui.custom.min.js"></script>
         <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
@@ -183,5 +183,15 @@ else
         <!-- ace scripts -->
         <script src="assets/js/ace-elements.min.js"></script>
         <script src="assets/js/ace.min.js"></script>
+        
+        <script>
+            $("#btnLogout").on('click', function () {
+                $.post("./Controller/UserController.php",
+                        {
+                            type: "logout"
+                        });
+                window.location = "./login.php";
+            });    
+        </script>
     </body>
 </html>

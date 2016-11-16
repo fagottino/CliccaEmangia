@@ -220,11 +220,3 @@ jQuery(function ($) {
     });
 
 })
-
-$("#btnLogout").on('click', function () {
-    $.post("./Controller/UserController.php",
-            {
-                type: "logout"
-            });
-    window.location = "./login.php";
-});

@@ -18,51 +18,46 @@ class User {
     private $email;
     private $telephone;
     
-    public function createUser($_id, $_name, $_surname, $_email, $_telephone) {
-        $this->id = $_id;
+    public function createUser($_name, $_surname, $_email, $_telephone) {
         $this->name = $_name;
         $this->surname = $_surname;
         $this->email = $_email;
         $this->telephone = $_telephone;
     }
     
-    function getId() {
+    public function getId() {
         return $this->id;
     }
 
-    function getName() {
+    public function getName() {
         return $this->name;
     }
 
-    function getSurname() {
+    public function getSurname() {
         return $this->surname;
     }
 
-    function getEmail() {
+    public function getEmail() {
         return $this->email;
     }
 
-    function getTelephone() {
+    public function getTelephone() {
         return $this->telephone;
     }
 
-    function setId($_id) {
-        $this->id = $_id;
-    }
-
-    function setName($_name) {
+    public function setName($_name) {
         $this->name = $_name;
     }
 
-    function setSurname($_surname) {
+    public function setSurname($_surname) {
         $this->surname = $_surname;
     }
 
-    function setEmail($_email) {
+    public function setEmail($_email) {
         $this->email = $_email;
     }
 
-    function setTelephone($_telephone) {
+    public function setTelephone($_telephone) {
         $this->telephone = $_telephone;
     }
 }

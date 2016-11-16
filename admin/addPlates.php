@@ -17,7 +17,7 @@
                     <div class="clearfix">
                         <div class="pull-right tableTools-container"></div>
                     </div>
-                    <form class="form-horizontal" id="validation-form" method="get">
+                    <form class="form-horizontal" id="validation-form" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="name">Nome:</label>
 
@@ -104,3 +104,12 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 </div><!-- /.page-content -->
+        
+<script>
+    $("#btnLogout").on('click', function () {
+        $.post("./Controller/PlateController.php",
+                {
+                    type: "insert"
+                });
+    });    
+</script>
