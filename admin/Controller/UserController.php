@@ -39,7 +39,6 @@ class UserController {
                     $result = $findUser->fetch_assoc();
                     $user = new User();
                     try {
-                        $user->setId($result['id_user']);
                         $user->setName($result['name']);
                         $user->setSurname($result['surname']);
                         $user->setEmail($result['email']);

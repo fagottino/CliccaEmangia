@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-success" style="margin-left:40%;">
+                        <button type="button" id="insertPlate" class="btn btn-sm btn-success" style="margin-left:40%;">
                             Invia
                             <i class="ace-icon fa fa-arrow-right icon-on-right bigger-230"></i>
                         </button>
@@ -104,12 +104,3 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 </div><!-- /.page-content -->
-        
-<script>
-    $("#btnLogout").on('click', function () {
-        $.post("./Controller/PlateController.php",
-                {
-                    type: "insert"
-                });
-    });    
-</script>
