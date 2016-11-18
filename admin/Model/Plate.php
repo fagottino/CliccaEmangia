@@ -12,13 +12,13 @@ class Plate {
     private $imagePath;
     private $available;
     
-    public function createPlate($_name, $_description, $_price, $_imagePath, $_available) {
+    /*public function createPlate($_name, $_description, $_price, $_imagePath, $_available) {
         $this->name;
         $this->description;
         $this->price;
         $this->imagePath;
         $this->available;
-    }
+    }*/
     
     public function getName() {
         return $this->name;
@@ -40,23 +40,23 @@ class Plate {
         return $this->available;
     }
 
-    public function setName($name) {
-        $this->name = $name;
+    public function setName($_name) {
+        $this->name = $_name;
     }
 
-    public function setDescription($description) {
-        $this->description = $description;
+    public function setDescription($_description) {
+        $this->description = $_description;
     }
 
-    public function setPrice($price) {
-        $this->price = $price;
+    public function setPrice($_price) {
+        $this->price = $_price;
     }
 
-    public function setImagePath($imagePath) {
-        $this->imagePath = $imagePath;
+    public function setImagePath($_imagePath) {
+        $this->imagePath = $_imagePath;
     }
 
-    public function setAvailable($available) {
-        $this->available = $available;
+    public function setAvailable($_available) {
+        $this->available = $_available;
     }
 }

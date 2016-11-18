@@ -187,3 +187,38 @@ jQuery(function ($) {
         $('[class*=select2]').remove();
     });
 })
+
+document.getElementById("insertPlate").onclick = function() {
+    
+    isAvailable = $("#available").is(":checked") ? "true" : "false";
+
+    $.post("./Controller/PlateController.php",
+            {
+                name: $('#name').val(),
+                description: $('#description').val(),
+                price: $('#price').val(),
+                //description: $('#description').val(),
+                available: isAvailable,
+                type: "insert"
+            },
+            function () {
+                /*$("#btnLogin").text('Controllo le credenziali...').fadeTo(1500, 1, function () {
+
+                    if (response == 1) {
+                        $("#btnLogin").fadeTo(200, 0.1, function () {
+                            $(this).text('Accesso in corso...').fadeTo(2000, 1, function () {
+                                document.location = './index.php';
+                            });
+                        });
+                    } else {
+                        $("#btnLogin").fadeTo(200, 0.1, function () {
+                            $(this).html('Login fallito. ' + response).fadeTo(3000, 1, function () {
+                                $(this).html("<i class=\"ace-icon fa fa-key\"></i> Login");
+                            });
+                        });
+                    }
+                });*/
+                alert("arrivato");
+            });
+    return false;
+};

@@ -176,14 +176,6 @@ else
         <script src="assets/js/jquery.maskedinput.min.js"></script>
         <script src="assets/js/select2.min.js"></script>
         <script src="assets/js/addPlatesScript.js"></script>
-        <script>
-            $("#insertPlate").on('click', function () {
-                $.post("./Controller/PlateController.php",
-                        {
-                            type: "insert"
-                        });
-            });
-        </script>
         <?php
             }
         ?>
