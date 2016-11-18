@@ -197,7 +197,8 @@ document.getElementById("insertPlate").onclick = function() {
                 name: $('#name').val(),
                 description: $('#description').val(),
                 price: $('#price').val(),
-                //description: $('#description').val(),
+                image: $('#image').get(0).files[0],
+                data : new FormData(),
                 available: isAvailable,
                 type: "insert"
             },
