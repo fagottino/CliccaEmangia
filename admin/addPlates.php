@@ -72,6 +72,7 @@
                                         </a>
                                     </label>
                                 </div>
+                                <span class="help-block">Immagini consentite: jpeg, jpg, png. Max 2MB</span>
                             </div>
                         </div>
 
