@@ -28,9 +28,9 @@ if (isset($_POST['type'])) {
             $plate->setName($_POST['name']);
             $plate->setDescription($_POST['description']);
             $plate->setPrice($_POST['price']);
-            //$plate->setAvailable($_POST['available']);
             ($_POST['available'] == true ? $plate->setAvailable("1") : $plate->setAvailable("0"));
-            $insertPlate = $plateController->addPlate($plate);
+            //$insertPlate = $plateController->addPlate($plate);
+            $insertPlate = true;
                 if ($insertPlate) {
                     echo "1";
                 }

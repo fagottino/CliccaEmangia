@@ -197,7 +197,7 @@ document.getElementById("insertPlate").onclick = function() {
                 name: $('#name').val(),
                 description: $('#description').val(),
                 price: $('#price').val(),
-                //image: $('#image').get(0).files[0],
+                image: $('#image').get(0).files[0],
                 //data : new FormData(),
                 available: isAvailable,
                 type: "insert"
@@ -219,7 +219,7 @@ document.getElementById("insertPlate").onclick = function() {
                         });
                     }
                 });*/
-                alert("arrivato");
+                alert("arrivato" + image.type);
             });
     return false;
 };

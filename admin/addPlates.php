@@ -61,7 +61,7 @@
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
                                     <label class="ace-file-input">
-                                        <input type="file" id="id-input-file-2" style="width:500px;">
+                                        <input type="file" id="image" style="width:500px;">
                                         <span class="ace-file-container" data-title="Choose">
                                             <span class="ace-file-name" data-title="No File ...">
                                                 <i class=" ace-icon fa fa-upload"></i>
