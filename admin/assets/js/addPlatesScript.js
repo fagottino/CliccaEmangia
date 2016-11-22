@@ -190,36 +190,61 @@ jQuery(function ($) {
 
 document.getElementById("insertPlate").onclick = function() {
     
-    isAvailable = $("#available").is(":checked") ? "true" : "false";
+    var isAvailable = $("#available").is(":checked") ? "true" : "false";
+    var plateImage = $('#plateImage').get(0).files[0];
+//
+//    $.post("./Controller/PlateController.php",
+//            {
+//                name: $('#name').val(),
+//                description: $('#description').val(),
+//                price: $('#price').val(),
+//                image: plateImage,
+//                available: isAvailable,
+//                type: "insert"
+//            },
+//            function () {
+//                /*$("#btnLogin").text('Controllo le credenziali...').fadeTo(1500, 1, function () {
+//
+//                    if (response == 1) {
+//                        $("#btnLogin").fadeTo(200, 0.1, function () {
+//                            $(this).text('Accesso in corso...').fadeTo(2000, 1, function () {
+//                                document.location = './index.php';
+//                            });
+//                        });
+//                    } else {
+//                        $("#btnLogin").fadeTo(200, 0.1, function () {
+//                            $(this).html('Login fallito. ' + response).fadeTo(3000, 1, function () {
+//                                $(this).html("<i class=\"ace-icon fa fa-key\"></i> Login");
+//                            });
+//                        });
+//                    }
+//                });*/
+//                alert("arrivato");
+//            });
+//            
+//    return false;
 
-    $.post("./Controller/PlateController.php",
-            {
-                name: $('#name').val(),
-                description: $('#description').val(),
-                price: $('#price').val(),
-                image: $('#image').get(0).files[0],
-                //data : new FormData(),
-                available: isAvailable,
-                type: "insert"
+        formData = new FormData();
+        formData.append("name", $('#name').val());
+        formData.append("description", $('#description').val());
+        formData.append("price", $('#price').val());
+        formData.append("plateImage", plateImage);
+        formData.append("available", isAvailable);
+        formData.append("type", "insert");
+        
+        $.ajax({
+            url: "./Controller/PlateController.php",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                // imposto il valore a 1 in questo modo so che l'utente ha modificato l'immagine
+                //$('#loadImage').val(1);
+                alert(result);
             },
-            function () {
-                /*$("#btnLogin").text('Controllo le credenziali...').fadeTo(1500, 1, function () {
+            error: function (jqXHR, textStatus, errorThrown) {
 
-                    if (response == 1) {
-                        $("#btnLogin").fadeTo(200, 0.1, function () {
-                            $(this).text('Accesso in corso...').fadeTo(2000, 1, function () {
-                                document.location = './index.php';
-                            });
-                        });
-                    } else {
-                        $("#btnLogin").fadeTo(200, 0.1, function () {
-                            $(this).html('Login fallito. ' + response).fadeTo(3000, 1, function () {
-                                $(this).html("<i class=\"ace-icon fa fa-key\"></i> Login");
-                            });
-                        });
-                    }
-                });*/
-                alert("arrivato" + image.type);
-            });
-    return false;
+            }
+        });
 };

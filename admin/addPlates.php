@@ -56,21 +56,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="id-input-file-2">Immagine:</label>
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="plateImage">Immagine:</label>
 
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <label class="ace-file-input">
-                                        <input type="file" id="image" style="width:500px;">
-                                        <span class="ace-file-container" data-title="Choose">
-                                            <span class="ace-file-name" data-title="No File ...">
-                                                <i class=" ace-icon fa fa-upload"></i>
-                                            </span>
-                                        </span>
-                                        <a class="remove" href="#">
-                                            <i class=" ace-icon fa fa-times"></i>
-                                        </a>
-                                    </label>
+                                    <input type="file" id="plateImage" />
                                 </div>
                                 <span class="help-block">Immagini consentite: jpeg, jpg, png. Max 2MB</span>
                             </div>
