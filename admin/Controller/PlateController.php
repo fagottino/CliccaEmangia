@@ -29,15 +29,19 @@ if (isset($_POST['type'])) {
             $plate->setDescription($_POST['description']);
             $plate->setPrice($_POST['price']);
             ($_POST['available'] == true ? $plate->setAvailable("1") : $plate->setAvailable("0"));
-            //$insertPlate = $plateController->addPlate($plate);
+            $sourceName = $_FILES['plateImage']['name'];
+            //$path = "upload/".$_FILES['file']['name'];
+            $path = "../../images/".$sourceName;
+            move_uploaded_file($_FILES['plateImage']['tmp_name'], $path);
+            $insertPlate = $plateController->addPlate($plate);
             $insertPlate = true;
                 if ($insertPlate) {
-                    echo "1";
+                    echo "UNOUNOUNO 1 -> ".$path;
                 }
             } catch (PlateException $e) {
-                echo $e->getMessage();
+                echo "TESTUNO ". $e->getMessage();
             } catch (DatabaseException $e) {
-                echo $e->getMessage();
+                echo "TESTDUE ". $e->getMessage();
             }
         break;
     }
