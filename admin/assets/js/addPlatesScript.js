@@ -190,7 +190,7 @@ jQuery(function ($) {
 
 document.getElementById("insertPlate").onclick = function() {
     
-    var isAvailable = $("#available").is(":checked") ? "true" : "false";
+    var isAvailable = $("#available").is(":checked") ? "1" : "0";
     var plateImage = $('#plateImage').get(0).files[0];
 //
 //    $.post("./Controller/PlateController.php",

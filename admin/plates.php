@@ -60,7 +60,7 @@
                                     </td>
                                     <td>$45</td>
                                     <td class="hidden-480">3,330</td>
-                                    <td>Feb 12</td>
+                                    <td><img src="../images/not-available.png" width="100px"/></td>
 
                                     <td class="hidden-480">
                                         <span class="label label-sm label-success">Disponibile</span>
