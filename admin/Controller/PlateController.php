@@ -1,6 +1,11 @@
 <?php
-require_once '../Model/Database.php';
-require_once '../Model/Plate.php';
+if (file_exists('../Model/Database.php')) {
+    require_once '../Model/Database.php';
+    require_once '../Model/Plate.php';
+} else {
+    require_once './Model/Database.php';
+    require_once './Model/Plate.php';
+}
 /**
  * Description of PlateController
  *
@@ -20,7 +25,11 @@ class PlateController {
     public function getAllPlate() {
         $connection = Database::getConnection();
         $getAllPlate = $connection->query("SELECT * FROM plate");
-        $listPlate = $getAllPlate->fetch_assoc();
+        if ($getAllPlate->num_rows > 0) {
+        $listPlate = $getAllPlate;
+        } else {
+            $listPlate = 0;
+        }
         return $listPlate;
     }
 }

@@ -1,11 +1,7 @@
 <?php
 require_once './Controller/PlateController.php';
-
 $plateController = new PlateController();
-
 $allPlate = $plateController->getAllPlate();
-
-print_r("PROVA PROVA PROVA ".$allPlate);
 ?>
 
 <div class="page-content">
@@ -41,10 +37,11 @@ print_r("PROVA PROVA PROVA ".$allPlate);
                             <thead>
                                 <tr>
                                     <th class="center">
-                                        <label class="pos-rel">
+<!--                                        <label class="pos-rel">
                                             <input type="checkbox" class="ace" />
                                             <span class="lbl"></span>
-                                        </label>
+                                        </label>-->
+                                        ID
                                     </th>
                                         <th>Nome</th>
                                         <th>Descrizione</th>
@@ -57,30 +54,44 @@ print_r("PROVA PROVA PROVA ".$allPlate);
                             </thead>
 
                             <tbody>
+                                <?php
+                                    foreach ($allPlate as $key => $value) {
+                                ?>
                                 <tr>
                                     <td class="center">
-                                        <label class="pos-rel">
+<!--                                        <label class="pos-rel">
                                             <input type="checkbox" class="ace" />
                                             <span class="lbl"></span>
-                                        </label>
+                                        </label>-->
+                                        <?php echo $value["id_plate"]; ?>
                                     </td>
 
                                     <td>
-                                        <a href="#">app.com</a>
+                                        <a href="#"><?php echo $value["name"]; ?></a>
                                     </td>
-                                    <td>$45</td>
-                                    <td class="hidden-480">3,330</td>
-                                    <td><img src="../images/not-available.png" width="100px"/></td>
+                                    <td><?php echo $value["description"]; ?></td>
+                                    <td class="hidden-480"><?php echo $value["price"]; ?> &euro;</td>
+                                    <td><img src="<?php echo $value["image"]; ?>" width="100px"/></td>
 
                                     <td class="hidden-480">
+                                        <?php
+                                            if ($value["available"] == "1") {
+                                        ?>
                                         <span class="label label-sm label-success">Disponibile</span>
+                                        <?php
+                                            } else {
+                                        ?>
+                                        <span class="label label-sm label-danger">Non disponibile</span>
+                                        <?php
+                                            }
+                                        ?>
                                     </td>
 
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">
-                                            <a class="blue" href="#">
+<!--                                            <a class="blue" href="#">
                                                 <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                            </a>
+                                            </a>-->
 
                                             <a class="green" href="#">
                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
@@ -90,42 +101,11 @@ print_r("PROVA PROVA PROVA ".$allPlate);
                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                             </a>
                                         </div>
-
-                                        <div class="hidden-md hidden-lg">
-                                            <div class="inline pos-rel">
-                                                <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                    <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                                                </button>
-
-                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                    <li>
-                                                        <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                                            <span class="blue">
-                                                                <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                            <span class="green">
-                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                            <span class="red">
-                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                     </td>
                                 </tr>
+                                <?php
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
