@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Nov 14, 2016 alle 00:48
+-- Creato il: Nov 23, 2016 alle 23:01
 -- Versione del server: 10.1.13-MariaDB
 -- Versione PHP: 7.0.5
 
@@ -23,16 +23,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `item`
+-- Struttura della tabella `drink`
 --
 
-CREATE TABLE `item` (
-  `id_item` int(11) NOT NULL,
+CREATE TABLE `drink` (
+  `id_drink` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `price` double NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `size` double NOT NULL,
+  `available` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `plate`
+--
+
+CREATE TABLE `plate` (
+  `id_plate` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `price` int(11) NOT NULL,
-  `type` enum('plate','drink') NOT NULL
+  `image` varchar(255) DEFAULT 'not-available.png',
+  `available` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `plate`
+--
+
+INSERT INTO `plate` (`id_plate`, `name`, `description`, `price`, `image`, `available`) VALUES
+(1, 'Primo piatto', 'Descrizione primo piatto', 1, '../images/not-available.png', 1),
+(2, 'Secondo piatto', 'Descrizione secondo piatto', 2, '../images/not-available.png', 1),
+(3, 'Terzo piatto', 'Descrizione terzo piatto', 3, '../images/miss-italia-2-1000x600.jpg', 0),
+(4, 'Quarto Piatto', 'Scrivi una descrizione sul quarto prodotto', 4, '../images/not-available.png', 1);
 
 -- --------------------------------------------------------
 
@@ -62,6 +89,19 @@ INSERT INTO `user` (`id_user`, `name`, `surname`, `email`, `password`, `telephon
 --
 
 --
+-- Indici per le tabelle `drink`
+--
+ALTER TABLE `drink`
+  ADD PRIMARY KEY (`id_drink`);
+
+--
+-- Indici per le tabelle `plate`
+--
+ALTER TABLE `plate`
+  ADD PRIMARY KEY (`id_plate`),
+  ADD UNIQUE KEY `id_plate` (`id_plate`);
+
+--
 -- Indici per le tabelle `user`
 --
 ALTER TABLE `user`
@@ -71,6 +111,16 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
+--
+-- AUTO_INCREMENT per la tabella `drink`
+--
+ALTER TABLE `drink`
+  MODIFY `id_drink` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT per la tabella `plate`
+--
+ALTER TABLE `plate`
+  MODIFY `id_plate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT per la tabella `user`
 --
