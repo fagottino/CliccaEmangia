@@ -191,45 +191,28 @@ jQuery(function ($) {
 document.getElementById("insertPlate").onclick = function() {
     
     var isAvailable = $("#available").is(":checked") ? "1" : "0";
+    
+    var name = $('#name').val();
+    var description = $('#description').val();
+    var price = $('#price').val();
     var plateImage = $('#plateImage').get(0).files[0];
-//
-//    $.post("./Controller/PlateController.php",
-//            {
-//                name: $('#name').val(),
-//                description: $('#description').val(),
-//                price: $('#price').val(),
-//                image: plateImage,
-//                available: isAvailable,
-//                type: "insert"
-//            },
-//            function () {
-//                /*$("#btnLogin").text('Controllo le credenziali...').fadeTo(1500, 1, function () {
-//
-//                    if (response == 1) {
-//                        $("#btnLogin").fadeTo(200, 0.1, function () {
-//                            $(this).text('Accesso in corso...').fadeTo(2000, 1, function () {
-//                                document.location = './index.php';
-//                            });
-//                        });
-//                    } else {
-//                        $("#btnLogin").fadeTo(200, 0.1, function () {
-//                            $(this).html('Login fallito. ' + response).fadeTo(3000, 1, function () {
-//                                $(this).html("<i class=\"ace-icon fa fa-key\"></i> Login");
-//                            });
-//                        });
-//                    }
-//                });*/
-//                alert("arrivato");
-//            });
-//            
-//    return false;
-
+    var available = isAvailable;
+    
+    if (name == "" || name == "Indica il nome del prodotto") {
+        $( "#name" ).focus();
+        $('#name').val('Indica il nome del prodotto');
+    } else if (description == "" || description == "Scrivi una descrizione su questo prodotto") {
+        $( "#description" ).focus();
+        $('#description').val('Scrivi una descrizione su questo prodotto');
+    } else if (price == "") {
+        $( "#price" ).focus();
+    } else {
         formData = new FormData();
-        formData.append("name", $('#name').val());
-        formData.append("description", $('#description').val());
-        formData.append("price", $('#price').val());
+        formData.append("name", name);
+        formData.append("description", description);
+        formData.append("price", price);
         formData.append("plateImage", plateImage);
-        formData.append("available", isAvailable);
+        formData.append("available", available);
         formData.append("type", "insert");
         
         $.ajax({
@@ -239,12 +222,15 @@ document.getElementById("insertPlate").onclick = function() {
             processData: false,
             contentType: false,
             success: function (result) {
-                // imposto il valore a 1 in questo modo so che l'utente ha modificato l'immagine
-                //$('#loadImage').val(1);
-                alert(result);
+                $("#resultMessage").removeAttr("style");
+                        
+                //$("#resultMessage").delay(5000).css("display", "none");
             },
             error: function (jqXHR, textStatus, errorThrown) {
-
+                $("#resultMessage").removeAttr("style");
+                        
+                //$("#resultMessage").delay(5000).css("display", "none");
             }
         });
+    }
 };

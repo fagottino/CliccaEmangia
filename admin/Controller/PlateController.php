@@ -1,6 +1,6 @@
 <?php
 require_once '../Model/Database.php';
-require '../Model/Plate.php';
+require_once '../Model/Plate.php';
 /**
  * Description of PlateController
  *
@@ -14,8 +14,14 @@ class PlateController {
     
     public function addPlate(Plate $_plate) {
         $connection = Database::getConnection();
-        $sql = "INSERT INTO `plate` (name, description, price, available) VALUES (".$_plate->getName().", ".$_plate->getDescription().", ".$_plate->getPrice().", ".$_plate->getAvailable().")";
-        $insertPlate = $connection->query("INSERT INTO `plate` (name, description, price, available) VALUES ('".$_plate->getName()."', '".$_plate->getDescription()."', '".$_plate->getPrice()."', '".$_plate->getAvailable()."')");
+        $insertPlate = $connection->query("INSERT INTO `plate` (name, description, price, image, available) VALUES ('".$_plate->getName()."', '".$_plate->getDescription()."', '".$_plate->getPrice()."', '".$_plate->getImagePath()."', '".$_plate->getAvailable()."')");
+    }
+    
+    public function getAllPlate() {
+        $connection = Database::getConnection();
+        $getAllPlate = $connection->query("SELECT * FROM plate");
+        $listPlate = $getAllPlate->fetch_assoc();
+        return $listPlate;
     }
 }
 
@@ -33,20 +39,21 @@ if (isset($_POST['type'])) {
                 $sourceName = $_FILES['plateImage']['name'];
                 $path = "../../images/".$sourceName;
                 move_uploaded_file($_FILES['plateImage']['tmp_name'], $path);
+                $path = "../images/".$sourceName;
             } else {
                 $sourceName = "not-available.png";
-                $path = "../../images/".$sourceName;
+                $path = "../images/".$sourceName;
             }
             $plate->setImagePath($path);
             $insertPlate = $plateController->addPlate($plate);
             $insertPlate = true;
                 if ($insertPlate) {
-                    echo "UNOUNOUNO 1 -> ".$path;
+                    echo "1";
                 }
             } catch (PlateException $e) {
-                echo "TESTUNO ". $e->getMessage();
+                echo $e->getMessage();
             } catch (DatabaseException $e) {
-                echo "TESTDUE ". $e->getMessage();
+                echo $e->getMessage();
             }
         break;
     }

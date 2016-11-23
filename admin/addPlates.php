@@ -17,13 +17,21 @@
                     <div class="clearfix">
                         <div class="pull-right tableTools-container"></div>
                     </div>
+                    <div class="alert alert-block alert-success" id="resultMessage" style="display: none;">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="ace-icon fa fa-times"></i>
+                        </button>
+
+                        <i class="ace-icon fa fa-check green"></i>
+                        Inserimento avvenuto con successo.
+                    </div>
                     <form class="form-horizontal" id="validation-form" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="name">Nome:</label>
 
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="name" name="name" id="name" class="col-xs-12 col-sm-3" />
+                                    <input type="name" name="name" id="name" class="col-xs-12 col-sm-3" required/>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +43,7 @@
                             <label for="form-field-8"></label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <textarea class="form-control" id="description" placeholder="Descrizione del piatto" style="width:500px;height:150px;"></textarea>
+                                    <textarea class="form-control" id="description" placeholder="Descrizione del piatto" style="width:500px;height:150px;" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +58,7 @@
                                         <i class="ace-icon fa fa-euro"></i>
                                     </span>
 
-                                    <input type="number" min="0" id="price" name="price" />
+                                    <input type="number" min="0" id="price" name="price" required/>
                                 </div>
                             </div>
                         </div>

@@ -1,3 +1,13 @@
+<?php
+require_once './Controller/PlateController.php';
+
+$plateController = new PlateController();
+
+$allPlate = $plateController->getAllPlate();
+
+print_r("PROVA PROVA PROVA ".$allPlate);
+?>
+
 <div class="page-content">
     <div class="page-header">
         <h1>
