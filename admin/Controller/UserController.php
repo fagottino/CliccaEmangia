@@ -77,7 +77,7 @@ if (isset($_POST['type'])) {
             }
         break;
         case 'logout':
-            $user->logout();
+            $userController->logout();
         break;
     }
 }

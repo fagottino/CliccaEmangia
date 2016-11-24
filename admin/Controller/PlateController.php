@@ -32,6 +32,11 @@ class PlateController {
         }
         return $listPlate;
     }
+    
+    public function deletePlate($_idPlate) {
+        $connection = Database::getConnection();
+        $deletePlate = $connection->query("DELETE FROM plate WHERE id_plate = '".$_idPlate."'");
+    }
 }
 
 if (isset($_POST['type'])) {
@@ -64,6 +69,10 @@ if (isset($_POST['type'])) {
             } catch (DatabaseException $e) {
                 echo $e->getMessage();
             }
+        break;
+        case "delete":
+            $plateController->deletePlate($_POST['id']);
+            echo "1";
         break;
     }
 }

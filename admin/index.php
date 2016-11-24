@@ -154,6 +154,9 @@ else
         <script src="assets/js/buttons.colVis.min.js"></script>
         <script src="assets/js/dataTables.select.min.js"></script>
         <script src="assets/js/platesTable.js"></script>
+        <script src="assets/js/jquery-ui.min.js"></script>
+        <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
         <?php
             } else if ($action == "home" || $action == "") {
         ?>
@@ -208,7 +211,50 @@ else
                             type: "logout"
                         });
                 window.location = "./login.php";
-            });    
-        </script>
+            });
+            
+            function deletes(no) {
+                $.post("./Controller/PlateController.php",
+                        {
+                            id: no,
+                            type: "delete"
+                        });
+                window.location = "./index.php?action=plates";
+            }
+            
+            function deletef(id, name) {
+                $("#dialog-confirm").text('Stai cancellando il piatto ' + name + '. Continuare?');
+                    $( "#dialog-confirm" ).removeClass('hide').dialog({
+                            resizable: false,
+                            width: '320',
+                            modal: true,
+                            title: "Cancellazione di un piatto",
+                            title_html: true,
+                            buttons: [
+                                    {
+                                            html: "<i class='ace-icon fa fa-trash-o bigger-110'></i>&nbsp; Cancella",
+                                            "class" : "btn btn-danger btn-minier",
+                                            click: function() {
+                                                $.post("./Controller/PlateController.php",
+                                                        {
+                                                            id: id,
+                                                            type: "delete"
+                                                        });
+                                                window.location = "./index.php?action=plates";
+                                                    $( this ).dialog( "close" );
+                                            }
+                                    }
+                                    ,
+                                    {
+                                            html: "<i class='ace-icon fa fa-times bigger-110'></i>&nbsp; Annulla",
+                                            "class" : "btn btn-minier",
+                                            click: function() {
+                                                    $( this ).dialog( "close" );
+                                            }
+                                    }
+                            ]
+                    });
+            }
+</script>
     </body>
 </html>
