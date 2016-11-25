@@ -1,3 +1,9 @@
+<?php
+require_once './Controller/PlateController.php';
+$plateController = new PlateController();
+$plate = $plateController->getPlate($_GET["idPlate"]);
+$i = 1;
+?>
 <div class="page-content">
     <div class="page-header">
         <h1>
@@ -31,7 +37,7 @@
 
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="name" name="name" id="name" class="col-xs-12 col-sm-3" required/>
+                                    <input type="name" name="name" id="name" class="col-xs-12 col-sm-3" value="<?php echo $plate["name"]; ?>" required/>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +49,7 @@
                             <label for="form-field-8"></label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <textarea class="form-control" id="description" placeholder="Descrizione del piatto" style="width:500px;height:150px;" required></textarea>
+                                    <textarea class="form-control" id="description" placeholder="Descrizione del piatto" style="width:500px;height:150px;" required><?php echo $plate["description"]; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +64,7 @@
                                         <i class="ace-icon fa fa-euro"></i>
                                     </span>
 
-                                    <input type="number" min="0" id="price" name="price" required/>
+                                    <input type="number" min="0" id="price" name="price" value="<?php echo $plate["price"]; ?>" required/>
                                 </div>
                             </div>
                         </div>
@@ -82,14 +88,15 @@
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
                                     <label>
-                                        <input id="available" class="ace ace-switch ace-switch-3" type="checkbox">
+                                        <!--<input id="available" class="ace ace-switch ace-switch-3" type="checkbox">-->
+                                        <input id="available" class="ace ace-switch ace-switch-3" type="checkbox" <?php echo ($plate["available"] == 1 ? "checked=\"checked\"" : ""); ?>>
                                         <span class="lbl"></span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                        <button type="button" id="insertPlate" class="btn btn-sm btn-success" style="margin-left:40%;">
+                        <button type="button" id="editPlate" class="btn btn-sm btn-success" style="margin-left:40%;">
                             Invia
                             <i class="ace-icon fa fa-arrow-right icon-on-right bigger-230"></i>
                         </button>

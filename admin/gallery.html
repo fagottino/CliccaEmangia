@@ -991,6 +991,13 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
+									<ul class="ace-thumbnails clearfix">
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+                                                                                </li>
+                                                                        </ul>
 								<div>
 									<ul class="ace-thumbnails clearfix">
 										<li>
@@ -998,23 +1005,6 @@
 												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
 											</a>
 
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">breakfast</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-danger">fruits</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-success">toast</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">diet</span>
-												</span>
-											</div>
 
 											<div class="tools">
 												<a href="#">
@@ -1263,38 +1253,38 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {
-	var $overflow = '';
-	var colorbox_params = {
-		rel: 'colorbox',
-		reposition:true,
-		scalePhotos:true,
-		scrolling:false,
-		previous:'<i class="ace-icon fa fa-arrow-left"></i>',
-		next:'<i class="ace-icon fa fa-arrow-right"></i>',
-		close:'&times;',
-		current:'{current} of {total}',
-		maxWidth:'100%',
-		maxHeight:'100%',
-		onOpen:function(){
-			$overflow = document.body.style.overflow;
-			document.body.style.overflow = 'hidden';
-		},
-		onClosed:function(){
-			document.body.style.overflow = $overflow;
-		},
-		onComplete:function(){
-			$.colorbox.resize();
-		}
-	};
+                                var $overflow = '';
+                                var colorbox_params = {
+                                        rel: 'colorbox',
+                                        reposition:true,
+                                        scalePhotos:true,
+                                        scrolling:false,
+                                        previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+                                        next:'<i class="ace-icon fa fa-arrow-right"></i>',
+                                        close:'&times;',
+                                        current:'{current} of {total}',
+                                        maxWidth:'100%',
+                                        maxHeight:'100%',
+                                        onOpen:function(){
+                                                $overflow = document.body.style.overflow;
+                                                document.body.style.overflow = 'hidden';
+                                        },
+                                        onClosed:function(){
+                                                document.body.style.overflow = $overflow;
+                                        },
+                                        onComplete:function(){
+                                                $.colorbox.resize();
+                                        }
+                                };
 
-	$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
-	$("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
-	
-	
-	$(document).one('ajaxloadstart.page', function(e) {
-		$('#colorbox, #cboxOverlay').remove();
-   });
-})
+                                $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+                                $("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
+
+
+                                $(document).one('ajaxloadstart.page', function(e) {
+                                        $('#colorbox, #cboxOverlay').remove();
+                           });
+                        })
 		</script>
 	</body>
 </html>

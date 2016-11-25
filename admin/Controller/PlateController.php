@@ -37,6 +37,17 @@ class PlateController {
         $connection = Database::getConnection();
         $deletePlate = $connection->query("DELETE FROM plate WHERE id_plate = '".$_idPlate."'");
     }
+    
+    public function getPlate($_idPlate) {
+        $connection = Database::getConnection();
+        $getPlate = $connection->query("SELECT * FROM plate WHERE id_plate = '".$_idPlate."'");
+        if ($getPlate->num_rows > 0) {
+        $plate = $getPlate->fetch_assoc();
+        } else {
+            $plate = 0;
+        }
+        return $plate;
+    }
 }
 
 if (isset($_POST['type'])) {

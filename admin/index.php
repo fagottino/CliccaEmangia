@@ -103,6 +103,9 @@ else
                         case 'addPlates':
                             include 'addPlates.php';
                         break;
+                        case 'editPlates':
+                            include 'editPlates.php';
+                        break;
                         case 'addDrinks':
                             include 'addDrinks.php';
                         break;
@@ -156,7 +159,47 @@ else
         <script src="assets/js/platesTable.js"></script>
         <script src="assets/js/jquery-ui.min.js"></script>
         <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+        <link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+        
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			jQuery(function($) {
+                                var $overflow = '';
+                                var colorbox_params = {
+                                        rel: 'colorbox',
+                                        reposition:true,
+                                        scalePhotos:true,
+                                        scrolling:false,
+                                        previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+                                        next:'<i class="ace-icon fa fa-arrow-right"></i>',
+                                        close:'&times;',
+                                        current:'{current} di {total}',
+                                        maxWidth:'100%',
+                                        maxHeight:'100%',
+                                        onOpen:function(){
+                                                $overflow = document.body.style.overflow;
+                                                document.body.style.overflow = 'hidden';
+                                        },
+                                        onClosed:function(){
+                                                document.body.style.overflow = $overflow;
+                                        },
+                                        onComplete:function(){
+                                                $.colorbox.resize();
+                                        }
+                                };
+
+                                $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+                                $("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner blue fa-spin'></i>");//let's add a custom loading icon
+
+                                $(document).one('ajaxloadstart.page', function(e) {
+                                        $('#colorbox, #cboxOverlay').remove();
+                           });
+                        })
+		</script>
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="assets/css/colorbox.min.css" />
+		<!-- page specific plugin scripts -->
+		<script src="assets/js/jquery.colorbox.min.js"></script>
         <?php
             } else if ($action == "home" || $action == "") {
         ?>
@@ -169,7 +212,7 @@ else
         <script src="assets/js/jquery.flot.resize.min.js"></script>
         <script src="assets/js/homeScript.js"></script>
         <?php
-            } else if ($action == "addPlates") {
+            } else if ($action == "addPlates" || $action == "editPlates") {
         ?>
         <!-- page specific plugin scripts -->
         <script src="assets/js/wizard.min.js"></script>

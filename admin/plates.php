@@ -70,7 +70,15 @@ $allPlate = $plateController->getAllPlate();
                                     </td>
                                     <td><?php echo $value["description"]; ?></td>
                                     <td class="hidden-480"><?php echo $value["price"]; ?> &euro;</td>
-                                    <td><img src="<?php echo $value["image"]; ?>" width="100px"/></td>
+                                    <td>
+                                        <ul class="ace-thumbnails clearfix">
+                                                <li>
+                                                    <a href="<?php echo $value["image"]; ?>" title="<?php echo $value["name"]; ?>" data-rel="colorbox">
+                                                            <img width="100" alt="<?php echo $value["name"]; ?>" src="<?php echo $value["image"]; ?>" />
+                                                    </a>
+                                                </li>
+                                        </ul>
+                                    </td>
 
                                     <td class="hidden-480">
                                         <?php
@@ -88,7 +96,7 @@ $allPlate = $plateController->getAllPlate();
 
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">
-                                            <a class="green" href="#">
+                                            <a class="green" href="index.php?action=editPlates&idPlate=<?php echo $value["id_plate"]; ?>">
                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                             </a>
                                             
