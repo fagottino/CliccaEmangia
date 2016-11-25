@@ -108,6 +108,7 @@ $drink = $drinkController->getDrink($_GET["idDrink"]);
                             </div>
                         </div>
                         <div class="form-group">
+                        <input type="hidden" id="iddrink" value="<?php echo $drink["id_drink"]; ?>">
                         <button type="button" id="editDrink" class="btn btn-sm btn-success" style="margin-left:40%;">
                             Invia
                             <i class="ace-icon fa fa-arrow-right icon-on-right bigger-230"></i>

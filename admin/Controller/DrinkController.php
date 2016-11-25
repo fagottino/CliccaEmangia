@@ -52,9 +52,9 @@ class DrinkController {
     public function editDrink(Drink $_drink) {
         $connection = Database::getConnection();
         if ($_drink->getImagePath() != "") {
-            $editDrink = $connection->query("UPDATE plate SET name = '".$_drink->getName()."', description = '".$_drink->getDescription()."', price = '".$_drink->getPrice()."', image = '".$_drink->getImagePath()."', size= '".$_drink->getSize()."', available = '".$_drink->getAvailable()."' WHERE id_drink = '".$_drink->getId()."'");
+            $editDrink = $connection->query("UPDATE drink SET name = '".$_drink->getName()."', description = '".$_drink->getDescription()."', price = '".$_drink->getPrice()."', image = '".$_drink->getImagePath()."', size= '".$_drink->getSize()."', available = '".$_drink->getAvailable()."' WHERE id_drink = '".$_drink->getId()."'");
         } else {
-            $editDrink = $connection->query("UPDATE plate SET name = '".$_drink->getName()."', description = '".$_drink->getDescription()."', price = '".$_drink->getPrice()."', available = '".$_drink->getAvailable()."' WHERE id_drink = '".$_drink->getId()."'");
+            $editDrink = $connection->query("UPDATE drink SET name = '".$_drink->getName()."', description = '".$_drink->getDescription()."', price = '".$_drink->getPrice()."', size= '".$_drink->getSize()."', available = '".$_drink->getAvailable()."' WHERE id_drink = '".$_drink->getId()."'");
         }
     }
 }
@@ -65,6 +65,7 @@ if (isset($_POST['type'])) {
         case 'insert':
             try {
                 $drink = new Drink();
+                $drink->setName($_POST['iddrink']);
                 $drink->setName($_POST['name']);
                 $drink->setDescription($_POST['description']);
                 $drink->setPrice($_POST['price']);
@@ -105,7 +106,8 @@ if (isset($_POST['type'])) {
                     $path = "";
                 }
                 $drink->setImagePath($path);
-                $updateDrink = $plateController->editPlate($plate);
+                $drink->setSize($_POST['cl']);
+                $updateDrink = $drinkController->editDrink($drink);
             } catch (PlateException $e) {
                 echo $e->getMessage();
             } catch (DatabaseException $e) {
