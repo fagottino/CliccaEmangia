@@ -2,7 +2,6 @@
 require_once './Controller/PlateController.php';
 $plateController = new PlateController();
 $plate = $plateController->getPlate($_GET["idPlate"]);
-$i = 1;
 ?>
 <div class="page-content">
     <div class="page-header">
@@ -76,6 +75,7 @@ $i = 1;
                                 <div class="clearfix">
                                     <input type="file" id="plateImage" />
                                 </div>
+                                <span class="help-block"><strong>Lascia vuoto per non cambiare l'immagine esistente</strong></span>
                                 <span class="help-block">Immagini consentite: jpeg, jpg, png. Max 2MB</span>
                             </div>
                         </div>
@@ -96,6 +96,7 @@ $i = 1;
                             </div>
                         </div>
                         <div class="form-group">
+                            <input type="hidden" id="idplate" value="<?php echo $plate["id_plate"]; ?>">
                         <button type="button" id="editPlate" class="btn btn-sm btn-success" style="margin-left:40%;">
                             Invia
                             <i class="ace-icon fa fa-arrow-right icon-on-right bigger-230"></i>

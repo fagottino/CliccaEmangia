@@ -6,6 +6,7 @@
  * @author fagottino
  */
 class Plate {
+    private $id;
     private $name;
     private $description;
     private $price;
@@ -19,6 +20,10 @@ class Plate {
         $this->imagePath;
         $this->available;
     }*/
+    
+    public function getId() {
+        return $this->id;
+    }
     
     public function getName() {
         return $this->name;
@@ -38,6 +43,10 @@ class Plate {
 
     public function getAvailable() {
         return $this->available;
+    }
+    
+    public function setId($_id) {
+        $this->id = $_id;
     }
 
     public function setName($_name) {

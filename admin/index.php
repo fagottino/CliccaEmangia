@@ -222,6 +222,7 @@ else
         <script src="assets/js/jquery.maskedinput.min.js"></script>
         <script src="assets/js/select2.min.js"></script>
         <script src="assets/js/addPlatesScript.js"></script>
+        <script src="assets/js/editPlates.js"></script>
         <script src="assets/js/ace-elements.min.js"></script>
         <script src="assets/js/ace.min.js"></script>
         <link rel="stylesheet" href="assets/css/chosen.min.css" />
