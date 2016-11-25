@@ -54,6 +54,7 @@ $allPlate = $plateController->getAllPlate();
 
                             <tbody>
                                 <?php
+                                if ($allPlate != NULL) 
                                     foreach ($allPlate as $key => $value) {
                                 ?>
                                 <tr>
@@ -101,7 +102,7 @@ $allPlate = $plateController->getAllPlate();
                                             </a>
                                             
                                             <!--<a class="red" href="#" id="<?php echo $value["id_plate"]; ?>" onclick="deletes('<?php echo $value["id_plate"]; ?>')"> </a>-->
-                                                <a href="#" id="id-btn-dialog2" onclick="deletef('<?php echo $value["id_plate"]; ?>', '<?php echo $value["name"]; ?>')">
+                                                <a href="#" id="id-btn-dialog2" onclick="deletePlate('<?php echo $value["id_plate"]; ?>', '<?php echo $value["name"]; ?>')">
                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                 </a>
                                         </div>

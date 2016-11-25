@@ -1,7 +1,12 @@
+<?php
+require_once './Controller/DrinkController.php';
+$drinkController = new DrinkController();
+$drink = $drinkController->getDrink($_GET["idDrink"]);
+?>
 <div class="page-content">
     <div class="page-header">
         <h1>
-            Aggiungi una nuova bevanda
+             Modifica le informazioni della bevanda <strong><?php echo $drink["name"]; ?></strong>
         </h1>
     </div><!-- /.page-header -->
     <div class="row">
@@ -22,7 +27,7 @@
                         </button>
 
                         <i class="ace-icon fa fa-check green"></i>
-                        Inserimento avvenuto con successo.
+                        Modifica avvenuta con successo.
                     </div>
                     </div>
                     <form class="form-horizontal" id="validation-form" method="post" enctype="multipart/form-data">
@@ -31,7 +36,7 @@
 
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="name" name="name" id="name" class="col-xs-12 col-sm-3" />
+                                    <input type="name" name="name" id="name" value="<?php echo $drink["name"]; ?>" class="col-xs-12 col-sm-3" />
                                 </div>
                             </div>
                         </div>
@@ -43,7 +48,7 @@
                             <label for="form-field-8"></label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <textarea class="form-control" id="description" placeholder="Descrizione del piatto" style="width:500px;height:150px;"></textarea>
+                                    <textarea class="form-control" id="description" placeholder="Descrizione del piatto" style="width:500px;height:150px;"><?php echo $drink["description"]; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +62,7 @@
                                         <i class="ace-icon fa fa-sort"></i>
                                     </span>
 
-                                    <input type="number" min="0" step="0.01" id="cl" name="cl" />
+                                    <input type="number" min="0" step="1" id="cl" name="cl" value="<?php echo $drink["size"]; ?>" />
                                 </div>
                             </div>
                         </div>
@@ -71,7 +76,7 @@
                                         <i class="ace-icon fa fa-euro"></i>
                                     </span>
 
-                                    <input type="number" min="0" id="price" name="price" />
+                                    <input type="number" min="0" id="price" name="price" value="<?php echo $drink["price"]; ?>" />
                                 </div>
                             </div>
                         </div>
@@ -83,6 +88,7 @@
                                 <div class="clearfix">
                                     <input type="file" id="drinkImage" />
                                 </div>
+                                <span class="help-block"><strong>Lascia vuoto per non cambiare l'immagine esistente</strong></span>
                                 <span class="help-block">Immagini consentite: jpeg, jpg, png. Max 2MB</span>
                             </div>
                         </div>
@@ -95,14 +101,14 @@
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
                                     <label>
-                                        <input id="available" class="ace ace-switch ace-switch-3" type="checkbox">
+                                        <input id="available" class="ace ace-switch ace-switch-3" type="checkbox" <?php echo ($drink["available"] == 1 ? "checked=\"checked\"" : ""); ?>>
                                         <span class="lbl"></span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                        <button type="button" id="insertDrink" class="btn btn-sm btn-success" style="margin-left:40%;">
+                        <button type="button" id="editDrink" class="btn btn-sm btn-success" style="margin-left:40%;">
                             Invia
                             <i class="ace-icon fa fa-arrow-right icon-on-right bigger-230"></i>
                         </button>
@@ -116,16 +122,6 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 </div><!-- /.page-content -->
-
-<script src="assets/js/wizard.min.js"></script>
-<script src="assets/js/jquery.validate.min.js"></script>
-<script src="assets/js/jquery-additional-methods.min.js"></script>
-<script src="assets/js/bootbox.js"></script>
-<script src="assets/js/jquery.maskedinput.min.js"></script>
-<script src="assets/js/select2.min.js"></script>
-<script src="assets/js/addDrink.js"></script>
-<script src="assets/js/ace-elements.min.js"></script>
-<script src="assets/js/ace.min.js"></script>
 <link rel="stylesheet" href="assets/css/chosen.min.css" />
 <script>
     $('#drinkImage').ace_file_input({
@@ -141,3 +137,4 @@
         //
     });
 </script>
+<script src="assets/js/editDrink.js"></script>

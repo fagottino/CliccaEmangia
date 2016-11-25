@@ -188,7 +188,7 @@ jQuery(function ($) {
     });
 })
 
-document.getElementById("insertDrink").onclick = function() {
+document.getElementById("editDrink").onclick = function() {
     
     var isAvailable = $("#available").is(":checked") ? "1" : "0";
     
@@ -217,7 +217,7 @@ document.getElementById("insertDrink").onclick = function() {
         formData.append("drinkImage", drinkImage);
         formData.append("cl", cl);
         formData.append("available", available);
-        formData.append("type", "insert");
+        formData.append("type", "edit");
         
         $.ajax({
             url: "./Controller/DrinkController.php",

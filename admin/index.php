@@ -108,8 +108,14 @@ else
                         case 'editPlates':
                             include 'editPlates.php';
                             break;
+                        case 'drinks':
+                            include 'drinks.php';
+                            break;
                         case 'addDrinks':
                             include 'addDrinks.php';
+                            break;
+                        case 'editDrinks':
+                            include 'editDrinks.php';
                             break;
                     }
                     ?>
