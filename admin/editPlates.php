@@ -6,7 +6,7 @@ $plate = $plateController->getPlate($_GET["idPlate"]);
 <div class="page-content">
     <div class="page-header">
         <h1>
-            Aggiungi un nuovo piatto
+            Modifica le informazioni del piatto <strong><?php echo $plate["name"]; ?></strong>
         </h1>
     </div><!-- /.page-header -->
     <div class="row">
@@ -111,3 +111,18 @@ $plate = $plateController->getPlate($_GET["idPlate"]);
         </div><!-- /.col -->
     </div><!-- /.row -->
 </div><!-- /.page-content -->
+<script>
+    $('#plateImage').ace_file_input({
+        no_file:'Nessun file selezionato...',
+        btn_choose:'Scegli',
+        btn_change:'Cambia',
+        droppable:false,
+        onchange:null,
+        thumbnail:false //| true | large
+        //whitelist:'gif|png|jpg|jpeg'
+        //blacklist:'exe|php'
+        //onchange:''
+        //
+    });
+</script>
+<script src="assets/js/editPlates.js"></script>

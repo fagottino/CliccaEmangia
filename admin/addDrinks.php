@@ -16,6 +16,14 @@
                 <div class="col-xs-12">
                     <div class="clearfix">
                         <div class="pull-right tableTools-container"></div>
+                    <div class="alert alert-block alert-success" id="resultMessage" style="display: none;">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="ace-icon fa fa-times"></i>
+                        </button>
+
+                        <i class="ace-icon fa fa-check green"></i>
+                        Inserimento avvenuto con successo.
+                    </div>
                     </div>
                     <form class="form-horizontal" id="validation-form" method="get">
                         <div class="form-group">
@@ -67,26 +75,15 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
 
                         <div class="form-group">
-                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="id-input-file-2">Immagine:</label>
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="drinkImage">Immagine:</label>
 
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <label class="ace-file-input">
-                                        <input type="file" id="id-input-file-2" style="width:500px;">
-                                        <span class="ace-file-container" data-title="Choose">
-                                            <span class="ace-file-name" data-title="No File ...">
-                                                <i class=" ace-icon fa fa-upload"></i>
-                                            </span>
-                                        </span>
-                                        <a class="remove" href="#">
-                                            <i class=" ace-icon fa fa-times"></i>
-                                        </a>
-                                    </label>
+                                    <input type="file" id="drinkImage" />
                                 </div>
+                                <span class="help-block">Immagini consentite: jpeg, jpg, png. Max 2MB</span>
                             </div>
                         </div>
 
@@ -105,7 +102,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-success" style="margin-left:40%;">
+                        <button type="button" id="insertDrink" class="btn btn-sm btn-success" style="margin-left:40%;">
                             Invia
                             <i class="ace-icon fa fa-arrow-right icon-on-right bigger-230"></i>
                         </button>
@@ -119,3 +116,28 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 </div><!-- /.page-content -->
+
+<script src="assets/js/wizard.min.js"></script>
+<script src="assets/js/jquery.validate.min.js"></script>
+<script src="assets/js/jquery-additional-methods.min.js"></script>
+<script src="assets/js/bootbox.js"></script>
+<script src="assets/js/jquery.maskedinput.min.js"></script>
+<script src="assets/js/select2.min.js"></script>
+<script src="assets/js/addDrink.js"></script>
+<script src="assets/js/ace-elements.min.js"></script>
+<script src="assets/js/ace.min.js"></script>
+<link rel="stylesheet" href="assets/css/chosen.min.css" />
+<script>
+    $('#drinkImage').ace_file_input({
+        no_file:'Nessun file selezionato...',
+        btn_choose:'Scegli',
+        btn_change:'Cambia',
+        droppable:false,
+        onchange:null,
+        thumbnail:false //| true | large
+        //whitelist:'gif|png|jpg|jpeg'
+        //blacklist:'exe|php'
+        //onchange:''
+        //
+    });
+</script>

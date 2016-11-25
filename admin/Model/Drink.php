@@ -5,11 +5,12 @@
  *
  * @author fagottino
  */
-class Plate {
+class Drink {
     private $id;
     private $name;
     private $description;
     private $price;
+    private $size;
     private $imagePath;
     private $available;
     
@@ -27,6 +28,10 @@ class Plate {
 
     public function getPrice() {
         return $this->price;
+    }
+
+    public function getSize() {
+        return $this->size;
     }
 
     public function getImagePath() {
@@ -51,6 +56,10 @@ class Plate {
 
     public function setPrice($_price) {
         $this->price = $_price;
+    }
+
+    public function setSize($_size) {
+        $this->size = $_size;
     }
 
     public function setImagePath($_imagePath) {

@@ -132,3 +132,56 @@ $allPlate = $plateController->getAllPlate();
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 </a>
 </div><!-- /.main-container -->
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="assets/js/dataTables.buttons.min.js"></script>
+<script src="assets/js/buttons.flash.min.js"></script>
+<script src="assets/js/buttons.html5.min.js"></script>
+<script src="assets/js/buttons.print.min.js"></script>
+<script src="assets/js/buttons.colVis.min.js"></script>
+<script src="assets/js/dataTables.select.min.js"></script>
+<script src="assets/js/platesTable.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="assets/css/colorbox.min.css" />
+    <!-- page specific plugin scripts -->
+    <script src="assets/js/jquery.colorbox.min.js"></script>
+            
+<script type="text/javascript">
+            jQuery(function($) {
+                    var $overflow = '';
+                    var colorbox_params = {
+                            rel: 'colorbox',
+                            reposition:true,
+                            scalePhotos:true,
+                            scrolling:false,
+                            previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+                            next:'<i class="ace-icon fa fa-arrow-right"></i>',
+                            close:'&times;',
+                            current:'{current} di {total}',
+                            maxWidth:'100%',
+                            maxHeight:'100%',
+                            onOpen:function(){
+                                    $overflow = document.body.style.overflow;
+                                    document.body.style.overflow = 'hidden';
+                            },
+                            onClosed:function(){
+                                    document.body.style.overflow = $overflow;
+                            },
+                            onComplete:function(){
+                                    $.colorbox.resize();
+                            }
+                    };
+
+                    $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+                    $("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner blue fa-spin'></i>");//let's add a custom loading icon
+
+                    $(document).one('ajaxloadstart.page', function(e) {
+                            $('#colorbox, #cboxOverlay').remove();
+               });
+            })
+        </script>

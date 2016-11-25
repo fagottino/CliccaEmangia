@@ -188,14 +188,15 @@ jQuery(function ($) {
     });
 })
 
-document.getElementById("insertPlate").onclick = function() {
+document.getElementById("insertDrink").onclick = function() {
     
     var isAvailable = $("#available").is(":checked") ? "1" : "0";
     
     var name = $('#name').val();
     var description = $('#description').val();
     var price = $('#price').val();
-    var plateImage = $('#plateImage').get(0).files[0];
+    var plateImage = $('#drinkImage').get(0).files[0];
+    var cl = $('#cl').val();
     var available = isAvailable;
     
     if (name == "" || name == "Indica il nome del prodotto") {
@@ -204,6 +205,8 @@ document.getElementById("insertPlate").onclick = function() {
     } else if (description == "" || description == "Scrivi una descrizione su questo prodotto") {
         $( "#description" ).focus();
         $('#description').val('Scrivi una descrizione su questo prodotto');
+    } else if (cl == "") {
+        $( "#cl" ).focus();
     } else if (price == "") {
         $( "#price" ).focus();
     } else {
@@ -212,11 +215,12 @@ document.getElementById("insertPlate").onclick = function() {
         formData.append("description", description);
         formData.append("price", price);
         formData.append("plateImage", plateImage);
+        formData.append("cl", cl);
         formData.append("available", available);
         formData.append("type", "insert");
         
         $.ajax({
-            url: "./Controller/PlateController.php",
+            url: "./Controller/DrinkController.php",
             type: "POST",
             data: formData,
             processData: false,
@@ -235,7 +239,7 @@ document.getElementById("insertPlate").onclick = function() {
     }
 };
 
-$('#plateImage').ace_file_input({
+$('#drinkImage').ace_file_input({
     no_file: 'Nessun file selezionato...',
     btn_choose: 'Scegli',
     btn_change: 'Cambia',

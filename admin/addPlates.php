@@ -103,3 +103,28 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 </div><!-- /.page-content -->
+
+<script src="assets/js/wizard.min.js"></script>
+<script src="assets/js/jquery.validate.min.js"></script>
+<script src="assets/js/jquery-additional-methods.min.js"></script>
+<script src="assets/js/bootbox.js"></script>
+<script src="assets/js/jquery.maskedinput.min.js"></script>
+<script src="assets/js/select2.min.js"></script>
+<script src="assets/js/addPlatesScript.js"></script>
+<script src="assets/js/ace-elements.min.js"></script>
+<script src="assets/js/ace.min.js"></script>
+<link rel="stylesheet" href="assets/css/chosen.min.css" />
+<script>
+    $('#plateImage').ace_file_input({
+        no_file:'Nessun file selezionato...',
+        btn_choose:'Scegli',
+        btn_change:'Cambia',
+        droppable:false,
+        onchange:null,
+        thumbnail:false //| true | large
+        //whitelist:'gif|png|jpg|jpeg'
+        //blacklist:'exe|php'
+        //onchange:''
+        //
+    });
+</script>
