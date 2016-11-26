@@ -192,6 +192,7 @@ document.getElementById("editDrink").onclick = function() {
     
     var isAvailable = $("#available").is(":checked") ? "1" : "0";
     
+    var iddrink = $('#iddrink').val();
     var name = $('#name').val();
     var description = $('#description').val();
     var price = $('#price').val();
@@ -211,6 +212,7 @@ document.getElementById("editDrink").onclick = function() {
         $( "#price" ).focus();
     } else {
         formData = new FormData();
+        formData.append("iddrink", iddrink);
         formData.append("name", name);
         formData.append("description", description);
         formData.append("price", price);

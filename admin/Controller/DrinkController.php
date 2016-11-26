@@ -92,7 +92,7 @@ if (isset($_POST['type'])) {
         case 'edit':
             try {
                 $drink = new Drink();
-                $drink->setId($_POST['idplate']);
+                $drink->setId($_POST['iddrink']);
                 $drink->setName($_POST['name']);
                 $drink->setDescription($_POST['description']);
                 $drink->setPrice($_POST['price']);
