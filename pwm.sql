@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Nov 23, 2016 alle 23:01
+-- Creato il: Nov 26, 2016 alle 14:10
 -- Versione del server: 10.1.13-MariaDB
 -- Versione PHP: 7.0.5
 
@@ -36,6 +36,15 @@ CREATE TABLE `drink` (
   `available` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dump dei dati per la tabella `drink`
+--
+
+INSERT INTO `drink` (`id_drink`, `name`, `description`, `price`, `image`, `size`, `available`) VALUES
+(7, 'Prima', 'Desc prima', 1, '../images/not-available.png', 0.01, 1),
+(8, 'Prodotto due', 'Scrivi una descrizione su questo prodottoa', 1, '../images/Schermata del 2016-11-15 20-30-49.png', 0.01, 0),
+(9, 'testAAAA', 'test', 1, '../images/Schermata del 2016-11-12 00-04-58.png', 0.01, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -59,7 +68,8 @@ INSERT INTO `plate` (`id_plate`, `name`, `description`, `price`, `image`, `avail
 (1, 'Primo piatto', 'Descrizione primo piatto', 1, '../images/not-available.png', 1),
 (2, 'Secondo piatto', 'Descrizione secondo piatto', 2, '../images/not-available.png', 1),
 (3, 'Terzo piatto', 'Descrizione terzo piatto', 3, '../images/miss-italia-2-1000x600.jpg', 0),
-(4, 'Quarto Piatto', 'Scrivi una descrizione sul quarto prodotto', 4, '../images/not-available.png', 1);
+(4, 'Quarto Piatto', 'Scrivi una descrizione sul quarto prodotto', 4, '../images/not-available.png', 1),
+(5, 'dbsdbs', 'dbdsbds', 1, '../images/Schermata del 2016-11-24 21-57-15.png', 1);
 
 -- --------------------------------------------------------
 
@@ -115,12 +125,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT per la tabella `drink`
 --
 ALTER TABLE `drink`
-  MODIFY `id_drink` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_drink` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT per la tabella `plate`
 --
 ALTER TABLE `plate`
-  MODIFY `id_plate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_plate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT per la tabella `user`
 --
