@@ -1,0 +1,8 @@
+# Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+# map neat URL to internal URL
+RewriteRule ^aggiungiPiatto/$ index.php?action=addPlates [nc,qsa]
+RewriteRule ^piatti/lista/$ index.php?action=plates [nc,qsa]
+RewriteRule ^piatti/lista/([0-9]+)/$ index.php?action=editPlates&idPlate$1 [nc,qsa]
