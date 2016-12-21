@@ -117,6 +117,6 @@ if (isset($_POST['type'])) {
     }
 }
 
-class DrinkException extends Exception { }
+class DrinksException extends Exception { }
 
 ?>

@@ -2,9 +2,12 @@
 if (file_exists('../Model/Database.php')) {
     require_once '../Model/Database.php';
     require_once '../Model/Plate.php';
-} else {
+} elseif (file_exists('./Model/Database.php')) {
     require_once './Model/Database.php';
     require_once './Model/Plate.php';
+} else {
+    require_once './admin/Model/Database.php';
+    require_once './admin/Model/Drink.php';
 }
 /**
  * Description of PlateController

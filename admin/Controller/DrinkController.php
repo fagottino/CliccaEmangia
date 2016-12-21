@@ -2,10 +2,14 @@
 if (file_exists('../Model/Database.php')) {
     require_once '../Model/Database.php';
     require_once '../Model/Drink.php';
-} else {
+} elseif (file_exists('./Model/Database.php')) {
     require_once './Model/Database.php';
     require_once './Model/Drink.php';
+} else {
+    require_once './admin/Model/Database.php';
+    require_once './admin/Model/Drink.php';
 }
+//die('ECCOLOOOOOOOOOOOOOOOOOOOOO '.getcwd());
 /**
  * Description of PlateController
  *
@@ -122,6 +126,6 @@ if (isset($_POST['type'])) {
     }
 }
 
-class PlateException extends Exception { }
+class DrinkException extends Exception { }
 
 ?>

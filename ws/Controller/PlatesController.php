@@ -124,6 +124,6 @@ if (isset($_POST['type'])) {
     }
 }
 
-class PlateException extends Exception { }
+class PlatesException extends Exception { }
 
 ?>
