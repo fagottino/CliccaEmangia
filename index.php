@@ -105,24 +105,24 @@ $allDrink = $drink->getAllDrink();
             <div class="item">
                 <div class="container">
                     <div class="header-content">
-                        <h1 class="header-title">BEST FOOD</h1>
-                        <p class="header-sub-title">create your own slogan</p>
+                        <h1 class="header-title">I MIGLIORI PANINI</h1>
+                        <p class="header-sub-title">per riprendere in un colpo le energie perse</p>
                     </div> <!-- /.header-content -->
                 </div>
             </div>
             <div class="item">
                 <div class="container">
                     <div class="header-content">
-                        <h1 class="header-title">BEST SNACKS</h1>
-                        <p class="header-sub-title">create your own slogan</p>
+                        <h1 class="header-title">I MIGLIORI SNACK</h1>
+                        <p class="header-sub-title">fedeli compagni di avventure di stuzzicheria</p>
                     </div> <!-- /.header-content -->
                 </div>
             </div>
             <div class="item">
                 <div class="container">
                     <div class="header-content text-right pull-right">
-                        <h1 class="header-title">BEST DRINKS</h1>
-                        <p class="header-sub-title">create your own slogan</p>
+                        <h1 class="header-title">I MIGLIORI BRINKS</h1>
+                        <p class="header-sub-title">per non restare mai a bocca vuota</p>
                     </div> <!-- /.header-content -->
                 </div>
             </div>
@@ -141,17 +141,14 @@ $allDrink = $drink->getAllDrink();
                         </div>
                         <div class="col-xs-12 col-sm-6 dis-table-cell">
                             <div class="section-content">
-                                <h2 class="section-content-title">About us</h2>
+                                <h2 class="section-content-title">Su di Noi</h2>
                                 <p class="section-content-para">
-                                    Astronomy compels the soul to look upward, and leads us from this world to another.  
-                                    Curious that we spend more time congratulating people who have succeeded than 
-                                    encouraging people who have not. As we got further and further away, it [the Earth]
-                                    diminished in size.
+                                    Clicca e Mangia è un pub specializzato in panini. Il menù è molto vario e comprende panini a base di hamburger, würstel, salsiccie, vari tipi di affettati e combinazioni di questi con salse, formaggi e conserve.
+                                    I panini sono molto ricchi e sostituiscono tranquillamente un pasto, e soprattutto sono molto buoni, complice anche un ottimo pane che anche dopo la tostatura rimane morbido e fragrante.                                    
                                 </p>
                                 <p class="section-content-para">
-                                    beautiful, warm, living object looked so fragile, so delicate, that if you touched 
-                                    it with a finger it would crumble and fall apart. Seeing this has to change a man. 
-                                    Where ignorance lurks, so too do the frontiers of discovery and imagination.
+                                    Effettuiamo anche servizio a domicilio gratuito.
+                                    Mettici alla prova per una serata diversa.
                                 </p>
                             </div> <!-- /.section-content -->
                         </div>
@@ -170,9 +167,9 @@ $allDrink = $drink->getAllDrink();
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="section-header">
-                                        <h2 class="pricing-title">Affordable Pricing</h2>
+                                        <h2 class="pricing-title">Il nostro menù</h2>
                                         <ul id="filter-list" class="clearfix">
-                                            <li class="filter" data-filter="all">All</li>
+                                            <li class="filter" data-filter="all">Tutti</li>
                                             <li class="filter" data-filter=".plates">Piatti</li>
                                             <li class="filter" data-filter=".drinks">Bevande</li>                           
                                         </ul><!-- @end #filter-list -->
@@ -233,7 +230,7 @@ $allDrink = $drink->getAllDrink();
         </section>
 
 
-        <!--== 8. Great Place to enjoy ==-->
+<!--        == 8. Great Place to enjoy ==
         <section id="drinks" class="great-place-to-enjoy">
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/beer_black.png">
             <div class="wrapper">
@@ -245,15 +242,15 @@ $allDrink = $drink->getAllDrink();
                         <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
 
                         </div>
-                    </div> <!-- /.dis-table -->
-                </div> <!-- /.row -->
-            </div> <!-- /.wrapper -->
-        </section> <!-- /#great-place-to-enjoy -->
+                    </div>  /.dis-table 
+                </div>  /.row 
+            </div>  /.wrapper 
+        </section>  /#great-place-to-enjoy -->
 
 
 
         <!--==  9. Our Beer  ==-->
-        <section id="beer" class="beer">
+<!--        <section id="beer" class="beer">
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/beer_color.png">
             <div class="container-fluid">
                 <div class="row dis-table">
@@ -285,12 +282,12 @@ $allDrink = $drink->getAllDrink();
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
 
 
 
         <!--== 10. Our Breakfast Menu ==-->
-        <section id="plates" class="breakfast">
+<!--        <section id="plates" class="breakfast">
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/bread_black.png">
             <div class="wrapper">
                 <div class="container-fluid">
@@ -301,15 +298,15 @@ $allDrink = $drink->getAllDrink();
                         <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
 
                         </div>
-                    </div> <!-- /.dis-table -->
-                </div> <!-- /.row -->
-            </div> <!-- /.wrapper -->
-        </section> <!-- /#breakfast -->
+                    </div>  /.dis-table 
+                </div>  /.row 
+            </div>  /.wrapper 
+        </section>  /#breakfast -->
 
 
 
         <!--== 11. Our Bread ==-->
-        <section id="bread" class="bread">
+<!--        <section id="bread" class="bread">
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/bread_color.png">
             <div class="container-fluid">
                 <div class="row dis-table">
@@ -338,7 +335,7 @@ $allDrink = $drink->getAllDrink();
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
 
 
 
@@ -348,7 +345,7 @@ $allDrink = $drink->getAllDrink();
 
 
         <!--== 13. Menu List ==----------------------------------------------------------------------------------------->
-        <section id="menu-list" class="menu-list">
+<!--        <section id="menu-list" class="menu-list">
             <div class="container">
                 <div class="row menu">
                     <div class="col-md-9 col-md-offset-1 col-sm-10">
@@ -383,7 +380,7 @@ $allDrink = $drink->getAllDrink();
                                 </div> 
                             </div>
 
-                            <div class="col-md-4 col-sm-6 col-xs-12"> <!-- col-md-3 col-sm-6 col-xs-12  -->
+                            <div class="col-md-4 col-sm-6 col-xs-12">  col-md-3 col-sm-6 col-xs-12  
                                 <div class="row">
                                     <div class="menu-catagory">
                                         <h2>Food</h2>
@@ -424,7 +421,7 @@ $allDrink = $drink->getAllDrink();
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
 
 
 
@@ -437,7 +434,7 @@ $allDrink = $drink->getAllDrink();
             <div class="container-fluid color-bg">
                 <div class="row dis-table">
                     <div class="hidden-xs col-sm-6 dis-table-cell">
-                        <h2 class="section-title">Contact With us</h2>
+                        <h2 class="section-title">Puoi trovarci qui</h2>
                     </div>
                     <div class="col-xs-6 col-sm-6 dis-table-cell">
                         <div class="section-content">
@@ -475,25 +472,25 @@ $allDrink = $drink->getAllDrink();
                         <div class="row">
                             <form class="contact-form" method="post" action="contact.php">
                                 <div class="form-group">
-                                    <h1 class="section-content">Contact us</h1>    
+                                    <h1 class="section-content">Contattaci</h1>    
                                 </div> 
                                 <div class="col-md-6 col-sm-6"> 
                                     <div class="form-group">
-                                        <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="  Name">
+                                        <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="  Nome">
                                     </div>
                                     <div class="form-group">
                                         <input name="email" type="email" class="form-control" id="email" required="required" placeholder="  Email">
                                     </div>
                                     <div class="form-group">
-                                        <input name="subject" type="text" class="form-control" id="subject" required="required" placeholder="  Subject">
+                                        <input name="subject" type="text" class="form-control" id="subject" required="required" placeholder="  Oggetto">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="  Message"></textarea>
+                                    <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="  Messaggio"></textarea>
                                 </div>
                                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
                                     <div class="text-center">
-                                        <button type="submit" id="submit" name="submit" class="btn btn-send">Send </button>
+                                        <button type="submit" id="submit" name="submit" class="btn btn-send">Invia </button>
                                     </div>
                                 </div>
                             </form>
