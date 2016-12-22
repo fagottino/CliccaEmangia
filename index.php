@@ -91,8 +91,8 @@ $allDrink = $drink->getAllDrink();
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#about">su di noi</a></li>
                         <li><a href="#pricing">prezzi</a></li>
-                        <li><a href="#drinks">bevande</a></li>
-                        <li><a href="#plates">piatti</a></li>
+<!--                        <li><a href="#drinks">bevande</a></li>
+                        <li><a href="#plates">piatti</a></li>-->
                         <li><a href="#contact">contatti</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
