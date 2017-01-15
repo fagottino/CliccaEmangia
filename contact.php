@@ -29,8 +29,7 @@ $testo = "Hai ricevuto una mail dal sito Clicca e Mangia da:<br /><br />"
 $mail->Body = $testo;
 $mail->isHTML(true);
 
-//$address = "clicca.mangia@gmail.com";
-$address = "anto.orla@gmail.com";
+$address = "clicca.mangia@gmail.com";
 $mail->AddAddress($address);
 
 if (!$mail->Send()) {
