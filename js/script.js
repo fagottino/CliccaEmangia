@@ -85,7 +85,7 @@ $(document).ready(function(){
 $(document).ready(function () {
     $("#loadMenuContent").click(function(event) {
         
-        $.get("php/ajax_menu.html", function(data){
+        $.get("php/ajax_menu.php", function(data){
             $('#moreMenuContent').append(data);
         });
         event.preventDefault();

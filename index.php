@@ -2,6 +2,8 @@
 include_once './admin/Controller/DrinkController.php';
 include_once './admin/Controller/PlateController.php';
 
+
+
 $plates = new PlateController();
 $allPlate = $plates->getAllPlate();
 
@@ -91,8 +93,8 @@ $allDrink = $drink->getAllDrink();
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#about">su di noi</a></li>
                         <li><a href="#pricing">prezzi</a></li>
-<!--                        <li><a href="#drinks">bevande</a></li>
-                        <li><a href="#plates">piatti</a></li>-->
+                        <!--                        <li><a href="#drinks">bevande</a></li>
+                                                <li><a href="#plates">piatti</a></li>-->
                         <li><a href="#contact">contatti</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -121,7 +123,7 @@ $allDrink = $drink->getAllDrink();
             <div class="item">
                 <div class="container">
                     <div class="header-content text-right pull-right">
-                        <h1 class="header-title">I MIGLIORI BRINKS</h1>
+                        <h1 class="header-title">I MIGLIORI DRINKS</h1>
                         <p class="header-sub-title">per non restare mai a bocca vuota</p>
                     </div> <!-- /.header-content -->
                 </div>
@@ -230,22 +232,22 @@ $allDrink = $drink->getAllDrink();
         </section>
 
 
-<!--        == 8. Great Place to enjoy ==
-        <section id="drinks" class="great-place-to-enjoy">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/beer_black.png">
-            <div class="wrapper">
-                <div class="container-fluid">
-                    <div class="row dis-table">
-                        <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
-                            <h2 class="section-title">Great Place to enjoy</h2>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
-
-                        </div>
-                    </div>  /.dis-table 
-                </div>  /.row 
-            </div>  /.wrapper 
-        </section>  /#great-place-to-enjoy -->
+        <!--        == 8. Great Place to enjoy ==
+                <section id="drinks" class="great-place-to-enjoy">
+                    <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/beer_black.png">
+                    <div class="wrapper">
+                        <div class="container-fluid">
+                            <div class="row dis-table">
+                                <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
+                                    <h2 class="section-title">Great Place to enjoy</h2>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
+        
+                                </div>
+                            </div>  /.dis-table 
+                        </div>  /.row 
+                    </div>  /.wrapper 
+                </section>  /#great-place-to-enjoy -->
 
 
 
@@ -358,10 +360,10 @@ $allDrink = $drink->getAllDrink();
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
-                                        <?php
-                                        if ($allDrink->num_rows > 0) {
-                                            foreach ($allDrink as $key => $value) {
-                                                echo ' 
+        <?php
+        if ($allDrink->num_rows > 0) {
+            foreach ($allDrink as $key => $value) {
+                echo ' 
                                         <h3 class= "menu-title">' . $value['name'] . '</h3 >
                                             <p class="menu-about">' . $value['description'] . '</p>
                                          <div class="menu-system">
@@ -373,9 +375,9 @@ $allDrink = $drink->getAllDrink();
                                                 <p class = "price">€' . $value['price'] . '</p>
                                             </div>
                                         </div>';
-                                            }
-                                        }
-                                        ?> 
+            }
+        }
+        ?> 
                                     </div>
                                 </div> 
                             </div>
@@ -388,10 +390,10 @@ $allDrink = $drink->getAllDrink();
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
-                                        <?php
-                                        if ($allPlate->num_rows > 0) {
-                                            foreach ($allPlate as $key => $value) {
-                                                echo '
+        <?php
+        if ($allPlate->num_rows > 0) {
+            foreach ($allPlate as $key => $value) {
+                echo '
                                         <h3 class= "menu-title">' . $value['name'] . '</h3>
                                             <p class="menu-about">' . $value['description'] . '</p>
                                          <div class="menu-system">
@@ -402,9 +404,9 @@ $allDrink = $drink->getAllDrink();
                                             <div class="half"> <p class = "price">€' . $value['price'] . '</p>
                                             </div>
                                         </div>';
-                                            }
-                                        }
-                                        ?> 
+            }
+        }
+        ?> 
                                     </div>
                                 </div>
                             </div>
