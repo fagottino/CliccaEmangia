@@ -472,7 +472,8 @@ $allDrink = $drink->getAllDrink();
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
                         <div class="row">
-                            <form class="contact-form" method="post" action="contact.php">
+                            <!--<form class="contact-form" method="post" action="contact.php">-->
+                            <form class="contact-form" method="post" action="">
                                 <div class="form-group">
                                     <h1 class="section-content">Contattaci</h1>    
                                 </div> 
@@ -492,7 +493,7 @@ $allDrink = $drink->getAllDrink();
                                 </div>
                                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
                                     <div class="text-center">
-                                        <button type="submit" id="submit" name="submit" class="btn btn-send">Invia </button>
+                                        <button type="submit" id="submitEmail" name="submitEmail" class="btn btn-send">Invia </button>
                                     </div>
                                 </div>
                             </form>
@@ -517,7 +518,6 @@ $allDrink = $drink->getAllDrink();
             </div>
         </footer>
 
-
         <script src="js/bootstrap.min.js"></script>
         <script src="js/owl.carousel.min.js"></script>
         <script type="text/javascript" src="js/jquery.mixitup.min.js" ></script>
@@ -528,5 +528,55 @@ $allDrink = $drink->getAllDrink();
         <script src="js/script.js"></script>
 
 
+<!--        <div id="responseEmail" style="display:none">-->
+        <div id="responseEmail">
+            Messaggio inviato &#128512; &#128512; &#128512;<br />
+            Grazie per averci scritto. Ti risponderemo al più presto.
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById("submitEmail").onclick = function() {
+                
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var subject = $('#subject').val();
+            var message = $('#message').val();
+                
+            if (name == "" || name == "Nome") {
+                alert("Riempi il campo \"Nome\"");
+                $( "#name" ).focus();
+            } else if (email == "" || email == "Email") {
+                alert("Riempi il campo \"Email\"");
+                $( "#email" ).focus();
+            } else if (subject == "" || subject == "Oggetto") {
+                alert("Riempi il campo \"Oggetto\"");
+                $( "#subject" ).focus();
+            } else if (message == "" || message == "Messaggio") {
+                alert("Scrivi un messaggio prima di inviare");
+                $( "#message" ).focus();
+            } else {
+                $.post("./contact.php",
+                        {
+                            name: $('#name').val(),
+                            email: $('#email').val(),
+                            subject: $('#subject').val(),
+                            message: $('#message').val()
+                        },
+                        function (response) {
+                            if (response) {
+                                $("#responseEmail").removeAttr("style");
+                            } else {
+                                $("#responseEmail").val("Errore nell'invio della mail.");
+                                $("#responseEmail").removeAttr("style");
+                            }
+                        });
+                return false;
+                }
+            };
+            
+            $( window ).scroll(function() {
+                $("#responseEmail").css( "display", "none" );
+              });
+        </script>
     </body>
 </html>

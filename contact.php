@@ -14,22 +14,29 @@ $mail->Port = 465;
 $mail->Username = "clicca.mangia";
 $mail->Password = "cliccaemangia";
 
-
-
 $mail->Subject = $_POST['subject'];
-$mail->Body = $_POST['message'];
-$mail->setFrom = $_POST["email"]; /// prende l'email di chi effettivamente manda 
+//$mail->Body = $_POST['message'];
+$mail->setFrom = $_POST["email"];
 $mail->FromName = $_POST["name"];
 
+$testo = "Hai ricevuto una mail dal sito Clicca e Mangia da:<br /><br />"
+.$_POST["name"]."<br />"
+.$_POST["email"]."<br />"
+.$_POST["subject"]."<br /><br />"
+."Messaggio <br />"
+.$_POST["message"]
+;
+$mail->Body = $testo;
+$mail->isHTML(true);
 
-$address = "clicca.mangia@gmail.com";
+//$address = "clicca.mangia@gmail.com";
+$address = "anto.orla@gmail.com";
 $mail->AddAddress($address);
 
-
-
 if (!$mail->Send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
+    //return "Mailer Error: " . $mail->ErrorInfo;
+    return false;
 } else {
-    echo "Message sent!";
+    return true;
+//    return "Message sent!";
 }
-?>
