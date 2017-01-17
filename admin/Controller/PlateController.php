@@ -25,9 +25,12 @@ class PlateController {
         $insertPlate = $connection->query("INSERT INTO `plate` (name, description, price, image, available) VALUES ('".$_plate->getName()."', '".$_plate->getDescription()."', '".$_plate->getPrice()."', '".$_plate->getImagePath()."', '".$_plate->getAvailable()."')");
     }
     
-    public function getAllPlate() {
+    public function getAllPlate($_available = false) {
         $connection = Database::getConnection();
-        $getAllPlate = $connection->query("SELECT * FROM plate");
+        if ($_available)
+            $getAllPlate = $connection->query("SELECT * FROM plate WHERE available = '1'");
+        else
+            $getAllPlate = $connection->query("SELECT * FROM plate");
         if ($getAllPlate->num_rows > 0) {
         $listPlate = $getAllPlate;
         } else {

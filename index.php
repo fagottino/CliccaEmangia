@@ -5,10 +5,10 @@ include_once './admin/Controller/PlateController.php';
 
 
 $plates = new PlateController();
-$allPlate = $plates->getAllPlate();
+$allPlate = $plates->getAllPlate(true);
 
 $drink = new DrinkController();
-$allDrink = $drink->getAllDrink();
+$allDrink = $drink->getAllDrink(true);
 ?>
 -->
 <!DOCTYPE html>
@@ -219,6 +219,8 @@ $allDrink = $drink->getAllDrink();
                                         <h3 class = "white">€' . $value['price'] . ' </h3>
                                         </li>';
                                     }
+                                } else {
+                                    echo "Non ci sono bevande disponibili";
                                 }
                                 ?> 
                                 </li>

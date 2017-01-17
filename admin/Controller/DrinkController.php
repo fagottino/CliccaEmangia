@@ -26,9 +26,12 @@ class DrinkController {
         $insertDrink = $connection->query("INSERT INTO `drink` (name, description, price, image, size, available) VALUES ('".$_drink->getName()."', '".$_drink->getDescription()."', '".$_drink->getPrice()."', '".$_drink->getImagePath()."', '".$_drink->getSize()."', '".$_drink->getAvailable()."')");
     }
     
-    public function getAllDrink() {
+    public function getAllDrink($_available = false) {
         $connection = Database::getConnection();
-        $getAllDrink = $connection->query("SELECT * FROM drink");
+        if ($_available)
+            $getAllDrink = $connection->query("SELECT * FROM drink WHERE available = '1'");
+        else
+            $getAllDrink = $connection->query("SELECT * FROM drink");
         if ($getAllDrink->num_rows > 0) {
         $listDrink = $getAllDrink;
         } else {
