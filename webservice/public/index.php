@@ -12,15 +12,20 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 
     return $response;
 });
+
 $app->get('/getPlates', function (Request $request, Response $response) {
     try {
         $connection = Database::getConnection();
-        $getAllPlate = $connection->query("SELECT * FROM plate");
-        
+        $getAllPlate = $connection->query("SELECT * FROM plate WHERE available = '1'");
+        $resp = "{plates:";
+        $plates = array();
         if ($getAllPlate->num_rows > 0) {
             while ($row = mysqli_fetch_assoc($getAllPlate)) {
-                echo json_encode($row);
+                $plates[] = $row;
             }
+            $resp .= json_encode($plates);
+            $resp .= "}";
+            $response->getBody()->write($resp);
         } else {
             $response->getBody()->write("Non ci sono piatti");
         }
@@ -28,15 +33,21 @@ $app->get('/getPlates', function (Request $request, Response $response) {
             $response->getBody()->write($ex->getMessage());
     }
 });
+
 $app->get('/getDrinks', function (Request $request, Response $response) {
     try {
         $connection = Database::getConnection();
-        $getAllPlate = $connection->query("SELECT * FROM drink");
+        $getAllDrink = $connection->query("SELECT * FROM drink WHERE available = '1'");
+        $resp = "{drinks:";
+        $drinks = array();
         
-        if ($getAllPlate->num_rows > 0) {
-            while ($row = mysqli_fetch_assoc($getAllPlate)) {
-                echo json_encode($row);
+        if ($getAllDrink->num_rows > 0) {
+            while ($row = mysqli_fetch_assoc($getAllDrink)) {
+                $drinks[] = $row;
             }
+            $resp .= json_encode($drinks);
+            $resp .= "}";
+            $response->getBody()->write($resp);
         } else {
             $response->getBody()->write("Non ci sono bevande");
         }
@@ -44,6 +55,7 @@ $app->get('/getDrinks', function (Request $request, Response $response) {
             $response->getBody()->write($ex->getMessage());
     }
 });
+
 $app->get('/getPlates/{id}', function (Request $request, Response $response) {
     $idPlate = $request->getAttribute('id');
     
@@ -62,6 +74,7 @@ $app->get('/getPlates/{id}', function (Request $request, Response $response) {
             $response->getBody()->write($ex->getMessage());
     }
 });
+
 $app->get('/getDrinks/{id}', function (Request $request, Response $response) {
     $idDrink = $request->getAttribute('id');
     
@@ -80,4 +93,54 @@ $app->get('/getDrinks/{id}', function (Request $request, Response $response) {
             $response->getBody()->write($ex->getMessage());
     }
 });
+
+$app->get('/getRandomItems', function (Request $request, Response $response) {
+    $idDrink = $request->getAttribute('id');
+    
+    try {
+        $connection = Database::getConnection();
+        $getItems = $connection->query("(SELECT name, description, image FROM `plate` WHERE available = '1' ORDER BY RAND() LIMIT 3)
+                UNION
+                (SELECT name, description, image  FROM `drink` WHERE available = '1' ORDER BY RAND() LIMIT 2)"
+                );
+        $resp = "{items:";
+        $plates = array();
+        if ($getItems->num_rows > 0) {
+            while ($row = mysqli_fetch_assoc($getItems)) {
+                $plates[] = $row;
+            }
+            $resp .= json_encode($plates);
+            $resp .= "}";
+            $response->getBody()->write($resp);
+        } else {
+            $response->getBody()->write("Articoli non trovati");
+        }
+    } catch (DatabaseException $ex) {
+            $response->getBody()->write($ex->getMessage());
+    }
+});
+
+$app->get('/getMenuOfTheDay', function (Request $request, Response $response) {
+    $idDrink = $request->getAttribute('id');
+    
+    try {
+        $connection = Database::getConnection();
+        $getItems = $connection->query("SELECT * FROM drink JOIN plate ON drink.of_the_day = plate.of_the_day WHERE drink.of_the_day = 1");
+        $resp = "{items:";
+        $plates = array();
+        if ($getItems->num_rows > 0) {
+            while ($row = mysqli_fetch_assoc($getItems)) {
+                $plates[] = $row;
+            }
+            $resp .= json_encode($plates);
+            $resp .= "}";
+            $response->getBody()->write($resp);
+        } else {
+            $response->getBody()->write("Menù del giorno non trovato");
+        }
+    } catch (DatabaseException $ex) {
+            $response->getBody()->write($ex->getMessage());
+    }
+});
+
 $app->run();

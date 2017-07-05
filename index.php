@@ -1,8 +1,6 @@
-<!-- <?php
+<?php
 include_once './admin/Controller/DrinkController.php';
 include_once './admin/Controller/PlateController.php';
-
-
 
 $plates = new PlateController();
 $allPlate = $plates->getAllPlate(true);
@@ -10,7 +8,6 @@ $allPlate = $plates->getAllPlate(true);
 $drink = new DrinkController();
 $allDrink = $drink->getAllDrink(true);
 ?>
--->
 <!DOCTYPE html>
 <html lang="en">
     <head>
